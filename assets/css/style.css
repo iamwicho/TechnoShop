@@ -6814,7 +6814,7 @@ footer.coffee .newletter {
     height: 450px;
     padding: 50px 0 0 0;
     overflow: hidden;
-    background-image: url(../images/pages/wcu_bg.png);
+    background-image: url(../images/pages/eligenosfondo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; }
@@ -6822,11 +6822,12 @@ footer.coffee .newletter {
       margin-left: 0;
       margin-right: 0; }
     .about-us .why-choose-us .wcu_img img {
-      width: 100%; }
+      width: 100%;}
     .about-us .why-choose-us .wcu-wrapper .wcu-block {
       display: flex;
       align-items: center;
-      margin-bottom: 30px; }
+      margin-bottom: 30px;
+     }
       .about-us .why-choose-us .wcu-wrapper .wcu-block .wcu_icon {
         margin-right: 26px; }
         .about-us .why-choose-us .wcu-wrapper .wcu-block .wcu_icon .icon-detail {
@@ -6837,20 +6838,21 @@ footer.coffee .newletter {
           align-items: center;
           justify-content: center; }
         .about-us .why-choose-us .wcu-wrapper .wcu-block .wcu_icon img {
-          max-width: 100%; }
+          max-width: 100%;    
+       }
       .about-us .why-choose-us .wcu-wrapper .wcu-block .wcu_intro {
         flex-grow: 1; }
         .about-us .why-choose-us .wcu-wrapper .wcu-block .wcu_intro h5 {
           font-family: "Cera Pro Bold";
           font-size: 18px;
-          color: #252525;
+          color: #ffffff;
           line-height: 1;
           display: block;
           margin-bottom: 12px; }
         .about-us .why-choose-us .wcu-wrapper .wcu-block .wcu_intro p {
           font-family: "Cera Pro Regular";
           font-size: 16px;
-          color: #636363;
+          color: #ffffff;
           line-height: 30px;
           display: block;
           line-height: 24px; }
