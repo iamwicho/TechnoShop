@@ -107,7 +107,7 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="admin.html" class="nav-link ">
+                <a href="admin.html" class="nav-link active">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Resumen
@@ -121,7 +121,7 @@
 
    
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
                     Formularios
@@ -141,8 +141,8 @@
                       <p>Empleado</p>
                     </a>
                   </li>
-                  <li class="nav-item ">
-                    <a href="laptop.html" class="nav-link active">
+                  <li class="nav-item">
+                    <a href="laptop.html" class="nav-link">
                       <i class="fas fa-laptop nav-icon"></i>
                       <p>Laptop</p>
                     </a>
@@ -218,9 +218,9 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
-            <div class="card card-success">
+            <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Laptop</h3>
+                  <h3 class="card-title">Cliente</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -228,75 +228,59 @@
                   <div class="card-body">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+                            <span class="input-group-text"><i class="fas fa-signature"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="ID Producto" name='idLaptop'>
-                      </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-laptop"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Modelo" name='modeloLaptop'>
+                        <input type="text" class="form-control" placeholder="Nombre(s)" id='nombreCliente'>
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-toggle-on"></i></span>
+                            <span class="input-group-text"><i class="fas fa-signature"></i></span>
 
                         </div>
-                        <input type="text" class="form-control" placeholder="Condicion" name='condLaptop'>
+                        <input type="text" class="form-control" placeholder="Apellidos" id='apellidoCliente'>
                       </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-sign-in-alt"></i></span>
+                          <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Disponibilidad" name='dispLaptop'>
-                      </div>
-                      <div class="input-group mb-3">
-                        
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-memory"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="RAM" name='ramLaptop'>
+                        <input type="text" class="form-control" placeholder="Usuario" id='userCliente'>
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-digital-tachograph"></i></span>
+                          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="number" class="form-control" placeholder="Gráficos" name='grafLaptop'>
+                        <input type="email" class="form-control" placeholder="Correo" id='correoCliente'>
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-hdd"></i></span>
+                          <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Almacenamiento Principal" name='almprinLaptop'>
+                        <input type="password" class="form-control" placeholder="Contraseña" id='contraCliente'>
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-hdd"></i></span>
+                          <span class="input-group-text"><i class="fas fa-phone"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Almacenamiento Secundario" name='almsecLaptop'>
+                        <input type="number" class="form-control" placeholder="Teléfono" id='telCliente'>
                       </div>
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fab fa-usb"></i></span>
+                            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Puertos" name='portLaptop'>
+                        <input type="text" class="form-control" placeholder="Sexo (Masculino o Femenino)" id='sexoCliente'>
                       </div>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-wifi"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Wi-Fi" name='wifiLaptop'>
-                      </div>
-                      
 
                      
                     
-                   
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
   
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
               </div>
