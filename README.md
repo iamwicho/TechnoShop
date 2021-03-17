@@ -1,18 +1,10 @@
-# TechnoShop
-[NEGOCIOS ELECTRÓNICOS II]
+Docente: Ing. Ricardo Emmanuel Reyes Acosta
+Materia: 	Negocios electrónicos II [07:00-08:00]
 
- DT Proyect - Shop WebPage
+e-commerce “Techno-Shop”
 
-Integrantes del Equipo:
-Leo
-Chuy
-Axa 
-Luis 
-
---Front-end
-bootstrap
-HTML
-
---Back-end
-Java 
-php
+Equipo_1: 
+Contreras Tovar José Axayácatl		17151237
+Guzmán Sánchez José Leonardo		  17151215
+Medina Peralta Jesús Eduardo 	 	17151223
+Muñoz Nieves Luis Fernando 	  	 17151213
