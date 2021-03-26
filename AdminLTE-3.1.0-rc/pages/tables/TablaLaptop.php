@@ -137,7 +137,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../tables/TablaCliente.php" class="nav-link active">
+                <a href="../tables/TablaCliente.php" class="nav-link ">
                   <i class="far fa-user nav-icon"></i>
                   <p>Cliente</p>
                 </a>
@@ -149,7 +149,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/TablaLaptop.php" class="nav-link">
+                <a href="../tables/TablaLaptop.php" class="nav-link active">
                   <i class="fas fa-laptop nav-icon"></i>
                   <p>Laptop</p>
                 </a>
@@ -231,10 +231,11 @@
                                         echo "<th>Puertos</th>";
                                         echo "<th>Wi-fi</th>";
                                         echo "<th>Bluetooth</th>";
-                                        echo "<th>Garantia</th>";
                                         echo "<th>Microfono</th>";
+                                        echo "<th>Garantia</th>";
                                         echo "<th>Camara</th>";
                                         echo "<th>Altavoces</th>";
+                                        echo "<th>Teclado</th>";
                                         echo "<th>Unidad Optica</th>";
                                         echo "<th>Bateria</th>";
                                         echo "<th>Pantalla</th>";
@@ -269,7 +270,7 @@
                                         echo "<td>" . $row['altavoces'] . "</td>";
                                         echo "<td>" . $row['teclado'] . "</td>";
                                         echo "<td>" . $row['unidadOptica'] . "</td>";
-                                        echo "<td>" . $row['ram'] . "</td>";
+
                                         echo "<td>" . $row['bateria'] . "</td>";
                                         echo "<td>" . $row['id_Pantalla'] . "</td>";
                                         echo "<td>";
