@@ -1,8 +1,13 @@
-
-   <?php
-  require_once('config.php');
-   $id_Empleado=$_GET['id_Empleado'];
-   $sql="Delete from empleado where id_Empleado='".$id_Empleado."'";
-  mysqli_query($link, $sql);
-  header('location:TablaEmpleado.php')
-   ?>
+<?php 
+if (isset($_GET['id_Empleado'])){
+	include('database.php');
+	$empleado = new Database();
+	$id_Empleado=intval($_GET['id_Empleado']);
+	$res = $empleado->deleteEmpleado($id_Empleado);
+	if($res){
+		header('location: TablaEmpleado.php');
+	}else{
+		echo "Error al eliminar el registro";
+	}
+}
+?>

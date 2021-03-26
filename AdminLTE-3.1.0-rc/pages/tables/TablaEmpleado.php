@@ -189,96 +189,97 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <?php
-                                    // Include config file
-                                    require_once "config.php";
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Rol</th>
 
-                                    // Attempt select query execution
-                                    $sql = "SELECT * FROM empleado INNER JOIN usuario ON empleado.id_Tipousuario=usuario.id_Tipousuario INNER JOIN sexo ON empleado.sexo=sexo.id_Sexo";
-                                    if ($result = mysqli_query($link, $sql)) {
-                                        if (mysqli_num_rows($result) > 0) {
-                                            echo "<table class='table table-bordered table-striped'>";
-                                            echo "<thead>";
-                                            echo "<tr>";
-                                            echo "<th>#</th>";
-                                            echo "<th>Rol</th>";
-                                            echo "<th>Nombre</th>";
-                                            echo "<th>Apellido</th>";
-                                            echo "<th>Edad</th>";
-                                            echo "<th>Sexo</th>";
-                                            echo "<th>Usuario</th>";
-                                            echo "<th>Correo</th>";
-                                            echo "<th>Teléfono</th>";
-                                            echo "<th>Dirección</th>";
-                                            echo "<th>Acción</th>";
-                                            echo "</tr>";
-                                            echo "</thead>";
-                                            echo "<tbody>";
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                
-                                                echo "<tr>";
-                                                echo "<td>" . $row['id_Empleado'] . "</td>";
-                                                echo "<td>" . $row['tipo'] . "</td>";
-                                                echo "<td>" . $row['nombres'] . "</td>";
-                                                echo "<td>" . $row['apellidos'] . "</td>";
-                                                echo "<td>" . $row['edad'] . "</td>";
-                                                echo "<td>" . $row['sexo'] . "</td>";
-                                                echo "<td>" . $row['usuario'] . "</td>";
-                                                echo "<td>" . $row['correo'] . "</td>";
-                                                echo "<td>" . $row['telefono'] . "</td>";
-                                                echo "<td>" . $row['direccion'] . "</td>";
-                                                echo "<td>";
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th>Edad</th>
+                                                <th>Sexo</th>
+                                                <th>Usuario</th>
+                                                <th>Correo</th>
+                                                <th>Teléfono</th>
+                                                <th>Dirección</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
 
-                                                echo "<a href='update.php?id=" . $row['id_Empleado'] . "' title='Actualizar' data-toggle='tooltip'><span class='fas fa-pencil-alt'></span></a>";
-                                                echo"<a href='deleteEmpleado.php?id_Empleado=" . $row['id_Empleado'] . "' title='Actualizar' data-toggle='tooltip'><span class='fas fa-trash'></span></a> ";
+                                        <tbody>
 
-                                                echo "</td>";
-                                                echo "</tr>";
+                                            <?php
+                                            include('database.php');
+                                            $empleado = new Database();
+                                            $listado = $empleado->readEmpleado();
+                                            ?>
+                                            <?php
+                                            while ($row = mysqli_fetch_object($listado)) {
+                                                $id_Empleado = $row->id_Empleado;
+                                                $tipo = $row->tipo;
+                                                $nombres = $row->nombres;
+                                                $apellidos = $row->apellidos;
+                                                $edad = $row->edad;
+                                                $sexo = $row->sexo;
+                                                $usuario = $row->usuario;
+                                                $correo = $row->correo;
+                                                $telefono = $row->telefono;
+                                                $direccion = $row->direccion;
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $id_Empleado; ?></td>
+                                                    <td><?php echo $tipo; ?></td>
+
+                                                    <td><?php echo $nombres; ?></td>
+                                                    <td><?php echo $apellidos; ?></td>
+                                                    <td><?php echo $edad; ?></td>
+                                                    <td><?php echo $sexo; ?></td>
+                                                    <td><?php echo $usuario; ?></td>
+                                                    <td><?php echo $correo; ?></td>
+                                                    <td><?php echo $telefono; ?></td>
+                                                    <td><?php echo $direccion; ?></td>
+
+                                                    <td>
+                                                        <a href="update.php?id=<?php echo $id_Empleado; ?>" class="edit" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
+                                                        <a href="#myModal" data-id=<?php echo $id_Empleado; ?>" class="delete" title="Eliminar" data-toggle="modal"><i class="fas fa-trash-alt">&#xE872;</i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php
                                             }
-                                            echo "</tbody>";
-                                            echo "</table>";
-                                            // Free result set
-                                            mysqli_free_result($result);
-                                        } else {
-                                            echo "<p class='lead'><em>No records were found.</em></p>";
-                                        }
-                                    } else {
-                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                                    }
-
-                                    // Close connection
-                                    mysqli_close($link);
-                                    ?>
-
-                                    
-
-
+                                            ?>
+                                        </tbody>
+                                    </table>
                                     <div id="myModal" class="modal fade">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                <form action="deleteEmpleado.php" method="POST">
-                                                <div class="modal-body">
-                                                    <p>Estas seguro que deseas borrar este elemento?</p>
-                                                    
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                                    <input type="submit" name="deleteEmpleado" class="btn btn-danger" value="Eliminar">
-                                                </div>
-                                                
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form action="deleteEmpleado.php?id_Empleado=<?php echo $id_Empleado;?>" method="POST">
+                                                    <div class="modal-body">
+                                                        <p>Estas seguro que deseas borrar este elemento?</p>
+                                                        <p>
+                                                            <?php
+                                                            echo $id_Empleado." " .$nombres." ".$tipo
+                                                            ?>
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                                        <input type="submit" name="deleteEmpleado" class="btn btn-danger" value="Eliminar">
+                                                    </div>
+
                                                 </form>
-                                                </div>
                                             </div>
                                         </div>
-                                <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
                             </div>
-                            <!-- /.card -->
+                            <!-- /.col -->
                         </div>
-                        <!-- /.col -->
+                        <!-- /.row -->
                     </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
