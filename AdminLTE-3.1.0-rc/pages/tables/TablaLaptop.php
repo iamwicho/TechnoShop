@@ -280,12 +280,13 @@
                                                     <td><?php echo $id_Pantalla; ?></td>
 
                                                     <td>
-                                                        <a href="update.php?id=<?php echo $id_Producto; ?>" class="edit" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
+                                                        <a  class="edit-btnL" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
                                                         <a  class="delete-btnL" title="Eliminar" data-toggle="modal" data-target="#MDLap"><i class="fas fa-trash-alt">&#xE872;</i></a>
                                                     </td>
                                                 </tr>
                                             <?php
                                             }
+                                            include 'MULaptop.php'
                                             ?>
                                         </tbody>
                                     </table>
@@ -390,6 +391,34 @@
                 ).get();
                 console.log(data);
                 $('#delete_idL').val(data[0]);
+            })
+        }
+
+        )
+    </script>
+
+<script>
+        $(document).ready (function(){
+            $('.edit-btnL').on('click',function(){
+                
+                $('#MULaptop').modal('show');
+                $tr=$(this).closest('tr');
+                var data=$tr.children("td").map(function(){
+                    return $(this).text();
+                }
+                ).get();
+                console.log(data);
+                $('#update_idL').val(data[0]);
+                $('#condicion').val(data[1]);
+                $('#disponibilidad').val(data[2]);
+                $('#modelo').val(data[4]);
+                $('#ram').val(data[8]);
+                $('#graficos').val(data[9]);
+                $('#almacenamientoPrincipal').val(data[10]);
+                $('#almacenamientoSecundario').val(data[11]);
+                $('#puertos').val(data[13]);
+                $('#bateria').val(data[22]);
+                
             })
         }
 

@@ -96,5 +96,17 @@ class Database
         } else {
             echo $res;
         }
+        
+    }
+
+    public function updateLaptop($id_Producto, $condicion, $disponibilidad, $modelo, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $puertos, $bateria )
+    {
+        $sql=  "UPDATE laptop SET condicion = '".$condicion."', disponibilidad='".$disponibilidad."', modelo='".$modelo."',ram='".$ram."',graficos='".$graficos."',almacenamientoPrincipal='".$almacenamientoPrincipal."',almacenamientoSecundario='".$almacenamientoSecundario."',puertos='".$puertos."', bateria='".$bateria."' WHERE id_Producto = '".$id_Producto."' ";
+        $res = mysqli_query($this->con, $sql);
+        if ($res) {
+            return true;
+        } else {
+            echo $res;
+        }
     }
 }
