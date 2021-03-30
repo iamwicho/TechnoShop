@@ -28,7 +28,7 @@
                 <div class="container-fluid">
                     <div class="row mb-12">
                         <div>
-                            <h1>Registros de la Tabla Empleado</h1>
+                            <h1>Registros de la Tabla Cliente</h1>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -189,12 +189,11 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table class="table table-bordered">
+                                    <table id="TEmpleado" class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Rol</th>
-
                                                 <th>Nombre</th>
                                                 <th>Apellidos</th>
                                                 <th>Edad</th>
@@ -223,14 +222,13 @@
                                                 $edad = $row->edad;
                                                 $sexo = $row->sexo;
                                                 $usuario = $row->usuario;
-                                                $correo = $row->correo;
                                                 $telefono = $row->telefono;
                                                 $direccion = $row->direccion;
+                                                $correo = $row->correo
                                             ?>
                                                 <tr>
                                                     <td><?php echo $id_Empleado; ?></td>
                                                     <td><?php echo $tipo; ?></td>
-
                                                     <td><?php echo $nombres; ?></td>
                                                     <td><?php echo $apellidos; ?></td>
                                                     <td><?php echo $edad; ?></td>
@@ -239,42 +237,54 @@
                                                     <td><?php echo $correo; ?></td>
                                                     <td><?php echo $telefono; ?></td>
                                                     <td><?php echo $direccion; ?></td>
-
                                                     <td>
-                                                        <a href="update.php?id=<?php echo $id_Empleado; ?>" class="edit" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                        <a href="#myModal" data-id=<?php echo $id_Empleado; ?>" class="delete" title="Eliminar" data-toggle="modal"><i class="fas fa-trash-alt">&#xE872;</i></a>
+                                                        
+                                                        <a  class="edit-btnE" data-toggle="modal"><i class="fas fa-pencil-alt">&#xE254;</i></a>
+                                                        <a  class="delete-btnE" title="Eliminar" data-toggle="modal"><i class="fas fa-trash">&#xE872;</i></a>
                                                     </td>
                                                 </tr>
                                             <?php
                                             }
+
+                                            include 'MUEmpleado.php'
+
+
                                             ?>
+                                           
+                                           <div id="MDEmpleado" class="modal fade">
+                                               <div class="modal-dialog">
+                                                   <div class="modal-content">
+                                                       <form action="deleteEmpleado.php" method="POST">
+                                                           <div class="modal-body">
+                                                               <input type="hidden" name="delete_idE" id="delete_idE"> 
+                                                            
+                                                            </input>
+                                                               <p>Estas seguro que deseas borrar este elemento?</p>
+                                                               <p>
+                                                                   
+                                                               </p>
+                                                           </div>
+                                                           <div class="modal-footer">
+                                                               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                                               <input type="submit" name="deleteEmpleado" class="btn btn-danger" value="Eliminar">
+                                                           </div>
+       
+                                                       </form>
+                                                   </div>
+                                               </div>
+                                           </div>
+
+
                                         </tbody>
                                     </table>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form action="deleteEmpleado.php?id_Empleado=<?php echo $id_Empleado;?>" method="POST">
-                                                    <div class="modal-body">
-                                                        <p>Estas seguro que deseas borrar este elemento?</p>
-                                                        <p>
-                                                            <?php
-                                                            echo $id_Empleado." " .$nombres." ".$tipo
-                                                            ?>
-                                                        </p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                                        <input type="submit" name="deleteEmpleado" class="btn btn-danger" value="Eliminar">
-                                                    </div>
 
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+
+
                                     <!-- /.card-body -->
                                 </div>
                                 <!-- /.card -->
                             </div>
+                            
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -320,22 +330,58 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+
+            $('#TEmpleado').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
-                "info": true,
-                "autoWidth": false,
+                "info": false,
+                "autoWidth": true,
                 "responsive": true,
             });
         });
+    </script>
+    <script>
+        $(document).ready (function(){
+            $('.delete-btnE').on('click',function(){
+                
+                $('#MDEmpleado').modal('show');
+                $tr=$(this).closest('tr');
+                var data=$tr.children("td").map(function(){
+                    return $(this).text();
+                }
+                ).get();
+                console.log(data);
+                $('#delete_idE').val(data[0]);
+            })
+        }
+
+        )
+    </script>
+    <script>
+        $(document).ready (function(){
+            $('.edit-btnE').on('click',function(){
+                
+                $('#MUEmpleado').modal('show');
+                $tr=$(this).closest('tr');
+                var data=$tr.children("td").map(function(){
+                    return $(this).text();
+                }
+                ).get();
+                console.log(data);
+                $('#update_idE').val(data[0]);
+                $('#nombres').val(data[2]);
+                $('#apellidos').val(data[3]);
+                $('#usuario').val(data[6]);
+                $('#correo').val(data[7]);
+                $('#telefono').val(data[8]);
+                $('#direccion').val(data[9]);
+                
+            })
+        }
+
+        )
     </script>
 
 </body>

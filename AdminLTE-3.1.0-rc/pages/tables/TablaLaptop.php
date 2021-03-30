@@ -122,7 +122,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../tables/TablaCliente.php" class="nav-link active">
+                                    <a href="../tables/TablaCliente.php" class="nav-link ">
                                         <i class="far fa-user nav-icon"></i>
                                         <p>Cliente</p>
                                     </a>
@@ -134,7 +134,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../tables/TablaLaptop.php" class="nav-link ">
+                                    <a href="../tables/TablaLaptop.php" class="nav-link active ">
                                         <i class="fas fa-laptop nav-icon"></i>
                                         <p>Laptop</p>
                                     </a>
@@ -189,7 +189,7 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" class="sorted">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -231,16 +231,16 @@
                                                 $id_Producto = $row->id_Producto;
                                                 $condicion = $row->condicion;
                                                 $disponibilidad = $row->disponibilidad;
-                                                $fabricante = $row->fabricante;
+                                                $id_fabricante = $row->id_fabricante;
                                                 $modelo = $row->modelo;
                                                 $precio = $row->precio;
-                                                $id_imagen = $row->id_imagen;
-                                                $id_sistema = $row->id_sistema;
+                                                $id_Imagen = $row->id_Imagen;
+                                                $id_Sistema = $row->id_Sistema;
                                                 $ram = $row->ram;
                                                 $graficos = $row->graficos;
                                                 $almacenamientoPrincipal = $row->almacenamientoPrincipal;
                                                 $almacenamientoSecundario = $row->almacenamientoSecundario;
-                                                $id_procesador = $row->id_procesador;
+                                                $id_Procesador = $row->id_Procesador;
                                                 $puertos = $row->puertos;
                                                 $wifi = $row->wifi;
                                                 $bluetooth = $row->bluetooth;
@@ -252,22 +252,21 @@
                                                 $unidadOptica = $row->unidadOptica;
                                                 $bateria = $row->bateria;
                                                 $id_Pantalla = $row->id_Pantalla;
-
                                             ?>
                                                 <tr>
                                                     <td><?php echo $id_Producto; ?></td>
                                                     <td><?php echo $condicion; ?></td>
                                                     <td><?php echo $disponibilidad; ?></td>
-                                                    <td><?php echo $fabricante; ?></td>
+                                                    <td><?php echo $id_fabricante; ?></td>
                                                     <td><?php echo $modelo; ?></td>
                                                     <td><?php echo $precio; ?></td>
-                                                    <td><?php echo $id_imagen; ?></td>
-                                                    <td><?php echo $id_sistema; ?></td>
+                                                    <td><?php echo $id_Imagen; ?></td>
+                                                    <td><?php echo $id_Sistema; ?></td>
                                                     <td><?php echo $ram; ?></td>
                                                     <td><?php echo $graficos; ?></td>
                                                     <td><?php echo $almacenamientoPrincipal; ?></td>
                                                     <td><?php echo $almacenamientoSecundario; ?></td>
-                                                    <td><?php echo $id_procesador; ?></td>
+                                                    <td><?php echo $id_Procesador; ?></td>
                                                     <td><?php echo $puertos; ?></td>
                                                     <td><?php echo $wifi; ?></td>
                                                     <td><?php echo $bluetooth; ?></td>
@@ -282,7 +281,7 @@
 
                                                     <td>
                                                         <a href="update.php?id=<?php echo $id_Producto; ?>" class="edit" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                        <a href="#myModal" data-id=<?php echo $id_Producto; ?>" class="delete" title="Eliminar" data-toggle="modal"><i class="fas fa-trash-alt">&#xE872;</i></a>
+                                                        <a  class="delete-btnL" title="Eliminar" data-toggle="modal" data-target="#MDLap"><i class="fas fa-trash-alt">&#xE872;</i></a>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -290,21 +289,22 @@
                                             ?>
                                         </tbody>
                                     </table>
-                                    <div id="myModal" class="modal fade">
+                                    <div id="MDLap" class="modal fade" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form action="deleteLaptop.php?id_Producto=<?php echo $id_Producto;?>" method="POST">
+                                            <div class="modal-header">
+                                            <h3>Eliminar registro de <b>Laptop</b></h3>
+                                            </div>
+                                                <form action="deleteLaptop.php" method="POST">
                                                     <div class="modal-body">
+                                                    
+                                                    <input type="hidden" name="delete_idL" id="delete_idL"> 
                                                         <p>Estas seguro que deseas borrar este elemento?</p>
-                                                        <p>
-                                                            <?php
-                                                            echo $id_Producto." " .$modelo
-                                                            ?>
-                                                        </p>
+                                                        
                                                     </div>
                                                     <div class="modal-footer">
                                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                                        <input type="submit" name="deleteEmpleado" class="btn btn-danger" value="Eliminar">
+                                                        <input type="submit" name="deleteLaptop" class="btn btn-danger" value="Eliminar">
                                                     </div>
 
                                                 </form>
@@ -376,6 +376,24 @@
                 "responsive": true,
             });
         });
+    </script>
+
+<script>
+        $(document).ready (function(){
+            $('.delete-btnL').on('click',function(){
+                
+                $('#MDLap').modal('show');
+                $tr=$(this).closest('tr');
+                var data=$tr.children("td").map(function(){
+                    return $(this).text();
+                }
+                ).get();
+                console.log(data);
+                $('#delete_idL').val(data[0]);
+            })
+        }
+
+        )
     </script>
 
 </body>

@@ -25,6 +25,12 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+    public function readSexo()
+    {
+        $sql = "SELECT * FROM sexo";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
     public function readEmpleado()
     {
         $sql = "SELECT * FROM empleado INNER JOIN usuario ON empleado.id_Tipousuario=usuario.id_Tipousuario INNER JOIN sexo ON empleado.sexo=sexo.id_Sexo";
@@ -67,6 +73,28 @@ class Database
             return true;
         } else {
             return false;
+        }
+    }
+
+    public function updateCliente($id_Cliente, $nombres, $apellidos, $usuario, $correo, $telefono, $direccion)
+    {
+        $sql=  "UPDATE cliente SET nombres = '".$nombres."', apellidos='".$apellidos."', usuario='".$usuario."',telefono='".$telefono."',direccion='".$direccion."' WHERE id_Cliente = '".$id_Cliente."' ";
+        $res = mysqli_query($this->con, $sql);
+        if ($res) {
+            return true;
+        } else {
+            echo $res;
+        }
+    }
+
+    public function updateEmpleado($id_Empleado, $nombres, $apellidos, $usuario, $correo, $telefono, $direccion)
+    {
+        $sql=  "UPDATE empleado SET nombres = '".$nombres."', apellidos='".$apellidos."', usuario='".$usuario."',correo='".$correo."',telefono='".$telefono."',direccion='".$direccion."' WHERE id_Empleado = '".$id_Empleado."' ";
+        $res = mysqli_query($this->con, $sql);
+        if ($res) {
+            return true;
+        } else {
+            echo $res;
         }
     }
 }

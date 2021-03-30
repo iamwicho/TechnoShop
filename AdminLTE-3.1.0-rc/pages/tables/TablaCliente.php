@@ -28,7 +28,7 @@
                 <div class="container-fluid">
                     <div class="row mb-12">
                         <div>
-                            <h1>Registros de la Tabla Empleado</h1>
+                            <h1>Registros de la Tabla Cliente</h1>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -189,7 +189,7 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table class="table table-bordered">
+                                    <table id="TCliente" class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -220,9 +220,9 @@
                                                 $edad = $row->edad;
                                                 $sexo = $row->sexo;
                                                 $usuario = $row->usuario;
-                                                $correo = $row->correo;
                                                 $telefono = $row->telefono;
                                                 $direccion = $row->direccion;
+                                                $correo = $row->correo
                                             ?>
                                                 <tr>
                                                     <td><?php echo $id_Cliente; ?></td>
@@ -234,42 +234,54 @@
                                                     <td><?php echo $correo; ?></td>
                                                     <td><?php echo $telefono; ?></td>
                                                     <td><?php echo $direccion; ?></td>
-
                                                     <td>
-                                                        <a href="update.php?id=<?php echo $id_Cliente; ?>" class="edit" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                        <a href="#myModal" data-id=<?php echo $id_Cliente; ?>" class="delete" title="Eliminar" data-toggle="modal"><i class="fas fa-trash-alt">&#xE872;</i></a>
+                                                        
+                                                        <a  class="edit-btnC" title="Editar" data-toggle="modal"><i class="fas fa-pencil-alt">&#xE254;</i></a>
+                                                        <a  class="delete-btnC" title="Eliminar" data-toggle="modal"><i class="fas fa-trash">&#xE872;</i></a>
                                                     </td>
                                                 </tr>
                                             <?php
                                             }
+
+                                            include 'MUCliente.php'
+
+
                                             ?>
+                                           
+                                           <div id="MDCliente" class="modal fade" data-backdrop="static" data-keyboard="false">
+                                               <div class="modal-dialog">
+                                                   <div class="modal-content">
+                                                       <form action="deleteCliente.php" method="POST">
+                                                           <div class="modal-body">
+                                                               <input type="hidden" name="delete_id" id="delete_id"> 
+                                                            
+                                                            </input>
+                                                               <p>Estas seguro que deseas borrar este elemento?</p>
+                                                               <p>
+                                                                   
+                                                               </p>
+                                                           </div>
+                                                           <div class="modal-footer">
+                                                               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                                               <input type="submit" name="deleteCliente" class="btn btn-danger" value="Eliminar">
+                                                           </div>
+       
+                                                       </form>
+                                                   </div>
+                                               </div>
+                                           </div>
+
+
                                         </tbody>
                                     </table>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form action="deleteCliente.php?id_Cliente=<?php echo $id_Cliente;?>" method="POST">
-                                                    <div class="modal-body">
-                                                        <p>Estas seguro que deseas borrar este elemento?</p>
-                                                        <p>
-                                                            <?php
-                                                            echo $id_Cliente." " .$nombres
-                                                            ?>
-                                                        </p>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                                        <input type="submit" name="deleteEmpleado" class="btn btn-danger" value="Eliminar">
-                                                    </div>
 
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+
+
                                     <!-- /.card-body -->
                                 </div>
                                 <!-- /.card -->
                             </div>
+                            
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -315,22 +327,58 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+
+            $('#TCliente').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
             });
         });
+    </script>
+     <script>
+        $(document).ready (function(){
+            $('.delete-btnC').on('click',function(){
+                console.log("Hola");
+                $('#MDCliente').modal('show');
+                $tr=$(this).closest('tr');
+                var data=$tr.children("td").map(function(){
+                    return $(this).text();
+                }
+                ).get();
+                console.log(data);
+                $('#delete_id').val(data[0]);
+            })
+        }
+
+        )
+    </script>
+     <script>
+        $(document).ready (function(){
+            $('.edit-btnC').on('click',function(){
+                
+                $('#MUCliente').modal('show');
+                $tr=$(this).closest('tr');
+                var data=$tr.children("td").map(function(){
+                    return $(this).text();
+                }
+                ).get();
+                console.log(data);
+                $('#update_id').val(data[0]);
+                $('#nombres').val(data[1]);
+                $('#apellidos').val(data[2]);
+                $('#usuario').val(data[5]);
+                $('#correo').val(data[6]);
+                $('#telefono').val(data[7]);
+                $('#telefono').val(data[7]);
+                
+            })
+        }
+
+        )
     </script>
 
 </body>
