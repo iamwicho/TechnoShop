@@ -218,69 +218,112 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
-            <div class="card card-primary">
+            <div class="card card-primary" >
                 <div class="card-header">
-                  <h3 class="card-title">Cliente</h3>
+                  <h1 class="card-title"> Empleado</h1>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form>
                   <div class="card-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-signature"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Nombre(s)" id='nombreCliente'>
-                      </div>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-signature"></i></span>
 
-                        </div>
-                        <input type="text" class="form-control" placeholder="Apellidos" id='apellidoCliente'>
-                      </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group row col-auto mb-4">
+                   
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Usuario" id='userCliente'>
+                        <input disabled type="text" class="form-control col-2" placeholder="id_Empleado" name='id_Empleado'>
+    
+                      
+                        <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fas fa-fingerprint"></i></span>
                       </div>
-                      <div class="input-group mb-3">
+                      <input disabled type="text" class="form-control col-2" placeholder="id_TipoUsuario" name='id_TipoUsuario'>
+                  
+                      
+                    </div>
+                    
+
+
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-address-book"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Nombre(s)" name='nombreCliente'>
+
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-address-book"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Apellido(s)" name='apellidoCliente'>
+                      </div>
+
+
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-user-astronaut"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Nombre de Usuario" name='userCliente'>
+                      </div>
+
+                      <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="email" class="form-control" placeholder="Correo" id='correoCliente'>
+                        <input type="email" class="form-control" placeholder="Correo" name='correoCliente'>
                       </div>
-                      <div class="input-group mb-3">
+
+                      <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Contraseña" id='contraCliente'>
+                        <input type="password" class="form-control" placeholder="Contraseña" name='contraCliente'>
                       </div>
-                      <div class="input-group mb-3">
+
+                      <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-phone"></i></span>
                         </div>
-                        <input type="number" class="form-control" placeholder="Teléfono" id='telCliente'>
-                      </div>
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Sexo (Masculino o Femenino)" id='sexoCliente'>
+                        <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" name='telefonoCliente'>
                       </div>
 
-                     
-                    
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                  </div>
-                  <!-- /.card-body -->
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Dirección" name='direccionEmpleado'>
+                      </div>
+                      <div class="input-group row col-auto mb-4">
+
+                        <div class="input-group-prepend mb-4">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                            </div>
+                          <select class="form-control select2" name='sexoCliente' type="text">
+                            <option selected="selected">.</option>
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                          </select>
+                          
+                        </div>
+                        
+                        <div class="input-group-prepend mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-hourglass-half"></i></span>
+                          </div>
+                          <input type="number" class="form-control" placeholder="Edad" name='edadEmpleado'>
+                        </div>
+
+                        
+                        
+                      </div>
+
+                      
+
+
   
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                  <div class="card-footer row">
+                    <button type="submit" class="btn btn-danger col-2">Cancelar</button>
+                    <button type="submit" class="btn btn-success col-10">Registrar</button>
                   </div>
                 </form>
               </div>
