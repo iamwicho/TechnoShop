@@ -373,7 +373,7 @@
                 $('#usuario').val(data[5]);
                 $('#correo').val(data[6]);
                 $('#telefono').val(data[7]);
-                $('#telefono').val(data[7]);
+                $('#direccion').val(data[8]);
                 
             })
         }

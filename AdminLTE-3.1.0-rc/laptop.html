@@ -209,7 +209,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-cube"></i></span>
                 </div>
-                <input type="number" class="form-control col-2" placeholder="Cantidad" name='stock'>
+                <input type="number" class="form-control col-2" placeholder="Cantidad" name='cantidad'>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-hand-holding-medical"></i></span>
@@ -227,9 +227,9 @@
                 </div>
                 <select class="form-control select2" type="text" placeholder="Fabricante" name='fabricante'>
                   <option> Fabricante</option>
-                  <option>a</option>
-                  <option>b</option>
-                  <option>c</option>
+                  <option>Asus</option>
+                  <option>Dell</option>
+                  <option>HP</option>
                 </select>
 
 
@@ -242,26 +242,30 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-barcode"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Modelo" name='nombreCliente'>
+                <input type="text" class="form-control" placeholder="Modelo" name='modelo'>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Precio" name='apellidoCliente'>
+                <input type="number" class="form-control" placeholder="Precio" name='precio'>
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-image"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Imagen" name='imagen'>
               </div>
 
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-memory"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Gráficos " name='userCliente'>
+                <input type="text" class="form-control" placeholder="Gráficos " name='graficos'>
               </div>
               <div class="input-group row col-auto mb-4">
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-memory"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="RAM" name='condicion'>
+                <select class="form-control select2" type="text" placeholder="RAM" name='ram'>
                   <option> RAM </option>
                   <option>4 GB</option>
                   <option>8 GB</option>
@@ -275,40 +279,35 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="Almacenamiento Principal" name='condicion'>
+                <select class="form-control select2" type="text" placeholder="Almacenamiento Principal" name='almacenamientoPrincipal'>
                   <option> Almacenamiento Principal </option>
-                  <option>--- SSD ---</option>
-                  <option>124 GB</option>
-                  <option>500 GB</option>
-                  <option>1 TB</option>
-                  <option>--- HDD ---</option>
-                  <option>124 GB</option>
-                  <option>500 GB</option>
-                  <option>1 TB</option>
-                  <option>--- M.2 ---</option>
-                  <option>124 GB</option>
-                  <option>500 GB</option>
-                  <option>1 TB</option>
+                  <option>124 GB SSD</option>
+                  <option>500 GB SSD</option>
+                  <option>1 TB SSD</option>
+                  <option>124 GB HDD</option>
+                  <option>500 GB HDD</option>
+                  <option>1 TB HDD</option>
+                  <option>124 GB M.2</option>
+                  <option>500 GB M.2</option>
+                  <option>1 TB M.2</option>
                 </select>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="Almacenamiento Secundario" name='condicion'>
+                <select class="form-control select2" type="text" placeholder="Almacenamiento Secundario" name='almacenamientoSecundario'>
                   <option> Almacenamiento Secundario </option>
-                  <option>--- SSD ---</option>
-                  <option>124 GB</option>
-                  <option>500 GB</option>
-                  <option>1 TB</option>
-                  <option>--- HDD ---</option>
-                  <option>124 GB</option>
-                  <option>500 GB</option>
-                  <option>1 TB</option>
-                  <option>--- M.2 ---</option>
-                  <option>124 GB</option>
-                  <option>500 GB</option>
-                  <option>1 TB</option>
+                  <option>124 GB SSD/option>
+                  <option>500 GB SSD</option>
+                  <option>1 TB SSD</option>
+                  <option>124 GB HDD </option>
+                  <option>500 GB HDD </option>
+                  <option>1 TB HDD</option>
+                  <option>124 GB M.2</option>
+                  <option>500 GB M.2</option>
+                  <option>1 TB M.2</option>
+                  <option>No aplica</option>
                 </select>
 
                 
@@ -320,16 +319,16 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" name='condicion'>
+                <select class="form-control select2" type="text" name='id_Familia'>
                   <option> Familia </option>
-                  <option>--- INTEL i9 ---</option>
-                  <option>--- INTEL i7 ---</option>
-                  <option>--- INTEL i5 ---</option>
-                  <option>--- INTEL i3 ---</option>
-                  <option>--- RYZEN 9 ---</option>
-                  <option>--- RYZEN 7 ---</option>
-                  <option>--- RYZEN 5 ---</option>
-                  <option>--- RYZEN 3 ---</option>
+                  <option>Intel i9 </option>
+                  <option> Intel i7 </option>
+                  <option> Intel i5 </option>
+                  <option> Intel i3 </option>
+                  <option> Ryzen 9 </option>
+                  <option> Ryzen 7 </option>
+                  <option> Ryzen 5 </option>
+                  <option> Ryzen 3 </option>
 
                 </select>
 
@@ -337,7 +336,7 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <input type="text" class="form-control" placeholder="Modelo Procesador" name='apellidoCliente'>
+                <input type="text" class="form-control" placeholder="Modelo Procesador" name='id_Procesador'>
                 
 
               </div>
@@ -348,7 +347,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-wifi"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='wifi'>
                   <option>Wi-Fi</option>
                   <option>Si</option>
                   <option>No</option>
@@ -358,7 +357,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fab fa-bluetooth-b"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='bluetooth'>
                   <option>Bluetooth</option>
                   <option>Si</option>
                   <option>No</option>
@@ -368,7 +367,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-microphone"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='microfono'>
                   <option>Microfono</option>
                   <option>Si</option>
                   <option>No</option>
@@ -378,7 +377,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-camera"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='camara'>
                   <option>Cámara</option>
                   <option>Si</option>
                   <option>No</option>
@@ -388,7 +387,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-volume-up"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='altavoces'>
                   <option>Altavoces</option>
                   <option>Si</option>
                   <option>No</option>
@@ -398,17 +397,17 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-keyboard"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='teclado'>
                   <option>Teclado</option>
-                  <option>Español</option>
-                  <option>Ingles</option>
+                  <option>Si</option>
+                  <option>No</option>
 
                 </select>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-compact-disc"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='unidadOptica'>
                   <option>Unidad Óptica</option>
                   <option>Si</option>
                   <option>No</option>
@@ -422,7 +421,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-plug"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Puertos" name='correoCliente'>
+                <input type="text" class="form-control" placeholder="Puertos" name='puertos'>
               </div>
 
               <div class="input-group mb-4">
@@ -430,7 +429,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-life-ring"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
+                <select class="form-control select2" type="text"  name='garantia'>
                   <option>Garantía</option>
                   <option>1 año directo con provedor</option>
                   <option>No</option>
@@ -444,7 +443,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-battery-full"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Capacidad de Batería" name='telefonoCliente'>
+                <input type="text" class="form-control" placeholder="Capacidad de Batería" name='bateria'>
               </div>
 
 

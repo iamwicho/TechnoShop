@@ -18,7 +18,7 @@ class Database
             die("Conexión a la base de datos falló " . mysqli_connect_error() . mysqli_connect_errno());
         }
     }
-    
+
     public function readCliente()
     {
         $sql = "SELECT * FROM cliente INNER JOIN sexo ON cliente.sexo=sexo.id_Sexo";
@@ -43,7 +43,37 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-    
+
+    public function createCliente($nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
+    {
+        $sha=sha1($contraseña);
+        $sql = "INSERT INTO cliente (id_Cliente,id_Tipousuario, nombres, apellidos, edad, sexo, usuario, correo, contraseña, telefono,direccion) VALUES (NULL, 'A', '" . $nombres . "','" . $apellidos . "', $edad, (SELECT id_Sexo from sexo where sexo='" . $sexo . "'), '" . $usuario . "', '" . $correo . "', '" . $sha . "',  '" . $telefono . "', '" . $direccion . "' )";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+        if ($res) {
+            return true;
+        } else {
+            return $res;
+        }
+    }
+
+    public function createEmpleado($id_Tipousuario,$nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
+    {
+        $sha=sha1($contraseña);
+        $sql = "INSERT INTO empleado (id_Empleado,id_Tipousuario, nombres, apellidos, edad, sexo, usuario, correo, contraseña, telefono,direccion) VALUES (NULL, (SELECT id_Tipousuario from usuario where tipo='" . $id_Tipousuario . "'), '" . $nombres . "','" . $apellidos . "', $edad, (SELECT id_Sexo from sexo where sexo='" . $sexo . "'), '" . $usuario . "', '" . $correo . "', '" . $sha . "',  '" . $telefono . "', '" . $direccion . "' )";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+        if ($res) {
+            return true;
+        } else {
+            return $res;
+        }
+    }
+
+    public function hola(){
+       return true;
+    }
+
     public function deleteCliente($id_Cliente)
     {
         $sql = "DELETE FROM cliente WHERE id_Cliente=$id_Cliente";
@@ -78,7 +108,7 @@ class Database
 
     public function updateCliente($id_Cliente, $nombres, $apellidos, $usuario, $correo, $telefono, $direccion)
     {
-        $sql=  "UPDATE cliente SET nombres = '".$nombres."', apellidos='".$apellidos."', usuario='".$usuario."',telefono='".$telefono."',direccion='".$direccion."' WHERE id_Cliente = '".$id_Cliente."' ";
+        $sql =  "UPDATE cliente SET nombres = '" . $nombres . "', apellidos='" . $apellidos . "', usuario='" . $usuario . "',telefono='" . $telefono . "',direccion='" . $direccion . "' WHERE id_Cliente = '" . $id_Cliente . "' ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
@@ -89,19 +119,18 @@ class Database
 
     public function updateEmpleado($id_Empleado, $nombres, $apellidos, $usuario, $correo, $telefono, $direccion)
     {
-        $sql=  "UPDATE empleado SET nombres = '".$nombres."', apellidos='".$apellidos."', usuario='".$usuario."',correo='".$correo."',telefono='".$telefono."',direccion='".$direccion."' WHERE id_Empleado = '".$id_Empleado."' ";
+        $sql =  "UPDATE empleado SET nombres = '" . $nombres . "', apellidos='" . $apellidos . "', usuario='" . $usuario . "',correo='" . $correo . "',telefono='" . $telefono . "',direccion='" . $direccion . "' WHERE id_Empleado = '" . $id_Empleado . "' ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
         } else {
             echo $res;
         }
-        
     }
 
-    public function updateLaptop($id_Producto, $condicion, $disponibilidad, $modelo, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $puertos, $bateria )
+    public function updateLaptop($id_Producto, $condicion, $disponibilidad, $modelo, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $puertos, $bateria)
     {
-        $sql=  "UPDATE laptop SET condicion = '".$condicion."', disponibilidad='".$disponibilidad."', modelo='".$modelo."',ram='".$ram."',graficos='".$graficos."',almacenamientoPrincipal='".$almacenamientoPrincipal."',almacenamientoSecundario='".$almacenamientoSecundario."',puertos='".$puertos."', bateria='".$bateria."' WHERE id_Producto = '".$id_Producto."' ";
+        $sql =  "UPDATE laptop SET condicion = '" . $condicion . "', disponibilidad='" . $disponibilidad . "', modelo='" . $modelo . "',ram='" . $ram . "',graficos='" . $graficos . "',almacenamientoPrincipal='" . $almacenamientoPrincipal . "',almacenamientoSecundario='" . $almacenamientoSecundario . "',puertos='" . $puertos . "', bateria='" . $bateria . "' WHERE id_Producto = '" . $id_Producto . "' ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;

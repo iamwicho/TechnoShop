@@ -41,6 +41,8 @@
 
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
@@ -225,7 +227,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form>
+                <form action="createCliente.php" method="POST" >
                   <div class="card-body">
 
                     <div class="input-group row col-auto mb-4">
@@ -250,12 +252,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-address-book"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Nombre(s)" name='nombreCliente'>
+                        <input type="text" class="form-control" placeholder="Nombre(s)" name='nombres' id="nombres" >
 
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-address-book"></i></span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Apellido(s)" name='apellidoCliente'>
+                      <input type="text" class="form-control" placeholder="Apellido(s)" name='apellidos' id="apellidos" >
                       </div>
 
 
@@ -263,34 +265,34 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-user-astronaut"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Nombre de Usuario" name='userCliente'>
+                        <input type="text" class="form-control" placeholder="Nombre de Usuario" name='usuario' id="usuario" >
                       </div>
 
                       <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="email" class="form-control" placeholder="Correo" name='correoCliente'>
+                        <input type="email" class="form-control" placeholder="Correo" name='correo' id="correo" >
                       </div>
 
                       <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Contraseña" name='contraCliente'>
+                        <input type="password" class="form-control" placeholder="Contraseña" name='contraseña' id="contraseña" >
                       </div>
 
                       <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-phone"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" name='telefonoCliente'>
+                        <input type="number" class="form-control" placeholder="XXX-XXX-XXXX" name='telefono' id="telefono" maxlength="11" >
                       </div>
                       <div class="input-group mb-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Dirección" name='direccionEmpleado'>
+                        <textarea name="direccion" id="direccion" class='form-control' maxlength="255" placeholder="Direccion" ></textarea>
                       </div>
 
                      
@@ -301,8 +303,8 @@
                           <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
                             </div>
-                          <select class="form-control select2" name='sexoCliente' type="text">
-                            <option selected="selected">.</option>
+                          <select class="form-control select2" name='sexo' id="sexo" type="text" >
+                            <option selected="selected">Sexo</option>
                             <option>Masculino</option>
                             <option>Femenino</option>
                           </select>
@@ -313,7 +315,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-hourglass-half"></i></span>
                           </div>
-                          <input type="number" class="form-control" placeholder="Edad" name='edadEmpleado'>
+                          <input type="number" class="form-control" placeholder="Edad" name='edad' id="edad" >
                         </div>
 
                         
@@ -325,7 +327,7 @@
   
                   <div class="card-footer row">
                     <button type="submit" class="btn btn-danger col-2">Cancelar</button>
-                    <button type="submit" class="btn btn-success col-10">Registrar</button>
+                    <button type="submit" name="CCliente" id="createCliente" class="btn btn-success col-10">Registrar</button>
                   </div>
                 </form>
               </div>
@@ -388,5 +390,6 @@ $('[data-mask]').inputmask()
 
     })
     </script>
+   <script type="text/javascript" src="validacion.js"></script>
   </body>
 </html>
