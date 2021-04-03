@@ -28,7 +28,7 @@
                 <div class="container-fluid">
                     <div class="row mb-12">
                         <div>
-                            <h1>Registros de la Tabla Empleado</h1>
+                            <h1>Registros de la Tabla Laptop</h1>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -44,7 +44,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4 ">
             <!-- Brand Logo -->
-            <a href="../../admin.html" class="brand-link">
+            <a href="../../admin.php" class="brand-link">
                 <img src="/AdminLTE-3.1.0-rc/assets/index/miniLogo.png" alt="TechnoShop Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
                 <span class="brand-text font-weight-light">TechnoShop</span>
             </a>
@@ -68,7 +68,7 @@
                         <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="../../admin.html" class="nav-link">
+                            <a href="../../admin.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Resumen
@@ -165,6 +165,16 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../bitacora.php" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Bitácora
+                                    <i class="right fas "></i>
+                                </p>
+                            </a>
+
                         </li>
                     </ul>
                 </nav>
@@ -283,8 +293,8 @@
                                                     <td><?php echo $id_Pantalla; ?></td>
 
                                                     <td>
-                                                        <a  class="edit-btnL" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                        <a  class="delete-btnL" title="Eliminar" data-toggle="modal" data-target="#MDLap"><i class="fas fa-trash-alt">&#xE872;</i></a>
+                                                        <a class="edit-btnL" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
+                                                        <a class="delete-btnL" title="Eliminar" data-toggle="modal" data-target="#MDLap"><i class="fas fa-trash-alt">&#xE872;</i></a>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -296,15 +306,15 @@
                                     <div id="MDLap" class="modal fade" data-backdrop="static" data-keyboard="false">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h3>Eliminar registro de <b>Laptop</b></h3>
-                                            </div>
+                                                <div class="modal-header">
+                                                    <h3>Eliminar registro de <b>Laptop</b></h3>
+                                                </div>
                                                 <form action="deleteLaptop.php" method="POST">
                                                     <div class="modal-body">
-                                                    
-                                                    <input type="hidden" name="delete_idL" id="delete_idL"> 
+
+                                                        <input type="hidden" name="delete_idL" id="delete_idL">
                                                         <p>Estas seguro que deseas borrar este elemento?</p>
-                                                        
+
                                                     </div>
                                                     <div class="modal-footer">
                                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -364,7 +374,7 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            
+
             $('#TLaptop').DataTable({
                 "paging": true,
                 "lengthChange": false,
@@ -377,48 +387,46 @@
         });
     </script>
 
-<script>
-        $(document).ready (function(){
-            $('.delete-btnL').on('click',function(){
-                
-                $('#MDLap').modal('show');
-                $tr=$(this).closest('tr');
-                var data=$tr.children("td").map(function(){
-                    return $(this).text();
-                }
-                ).get();
-                console.log(data);
-                $('#delete_idL').val(data[0]);
-            })
-        }
+    <script>
+        $(document).ready(function() {
+                $('.delete-btnL').on('click', function() {
+
+                    $('#MDLap').modal('show');
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+                    console.log(data);
+                    $('#delete_idL').val(data[0]);
+                })
+            }
 
         )
     </script>
 
-<script>
-        $(document).ready (function(){
-            $('.edit-btnL').on('click',function(){
-                
-                $('#MULaptop').modal('show');
-                $tr=$(this).closest('tr');
-                var data=$tr.children("td").map(function(){
-                    return $(this).text();
-                }
-                ).get();
-                console.log(data);
-                $('#update_idL').val(data[0]);
-                $('#condicion').val(data[3]);
-                $('#disponibilidad').val(data[4]);
-                $('#modelo').val(data[2]);
-                $('#ram').val(data[9]);
-                $('#graficos').val(data[10]);
-                $('#almacenamientoPrincipal').val(data[11]);
-                $('#almacenamientoSecundario').val(data[12]);
-                $('#puertos').val(data[14]);
-                $('#bateria').val(data[23]);
-                
-            })
-        }
+    <script>
+        $(document).ready(function() {
+                $('.edit-btnL').on('click', function() {
+
+                    $('#MULaptop').modal('show');
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+                    console.log(data);
+                    $('#update_idL').val(data[0]);
+                    $('#condicion').val(data[3]);
+                    $('#disponibilidad').val(data[4]);
+                    $('#modelo').val(data[2]);
+                    $('#ram').val(data[9]);
+                    $('#graficos').val(data[10]);
+                    $('#almacenamientoPrincipal').val(data[11]);
+                    $('#almacenamientoSecundario').val(data[12]);
+                    $('#puertos').val(data[14]);
+                    $('#bateria').val(data[23]);
+
+                })
+            }
 
         )
     </script>

@@ -19,6 +19,12 @@ class Database
         }
     }
 
+    public function readBitacora(){
+        $sql = "SELECT * FROM bitacora";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
     public function readCliente()
     {
         $sql = "SELECT * FROM cliente INNER JOIN sexo ON cliente.sexo=sexo.id_Sexo";
@@ -28,9 +34,10 @@ class Database
 
     public function countCliente()
     {
-        $sql = "SELECT COUNT FROM cliente";
+        $sql = "SELECT * FROM cliente INNER JOIN sexo ON cliente.sexo=sexo.id_Sexo";
         $res = mysqli_query($this->con, $sql);
-        return $res;
+        $filas=mysqli_num_rows($res);
+        return $filas;
     }
     public function readSexo()
     {
@@ -49,6 +56,13 @@ class Database
         $sql = "SELECT * FROM laptop";
         $res = mysqli_query($this->con, $sql);
         return $res;
+    }
+    public function countLaptop()
+    {
+        $sql = "SELECT * FROM laptop";
+        $res = mysqli_query($this->con, $sql);
+        $filas=mysqli_num_rows($res);
+        return $filas;
     }
     
 

@@ -40,7 +40,8 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css" />
-    <link rel="shortcut icon" href="assets/favalogo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
@@ -108,7 +109,7 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="admin.html" class="nav-link active">
+                <a href="admin.html" class="nav-link ">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Resumen
@@ -122,7 +123,7 @@
 
    
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link ">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
                     Formularios
@@ -137,7 +138,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="empleado.html" class="nav-link">
+                    <a href="empleado.html" class="nav-link ">
                       <i class="far fa-id-card nav-icon"></i>
                       <p>Empleado</p>
                     </a>
@@ -207,7 +208,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="bitacora.php" class="nav-link ">
+                <a href="bitacora.php" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
                   <p>
                     Bitácora
@@ -229,166 +230,87 @@
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Resumen:</h1>
+            <div class="card card-primary" >
+                <div class="card-header">
+                  <h1 class="card-title"> Bitácora de movimientos</h1>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!-- /.card -->
+
+                            <div class="card">
+
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="TBitacora" class="table table-bordered ">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Accion</th>
+                                                <th>Tabla</th>
+                                                <th>Fecha</th>
+                                                
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                            <?php
+                                            include('pages/tables/database.php');
+                                            $bitacora = new Database();
+                                            $listado = $bitacora->readBitacora();
+                                            ?>
+                                            <?php
+                                            while ($row = mysqli_fetch_object($listado)) {
+                                                $id_Bitacora = $row->id_Bitacora;
+                                                $accion = $row->accion;
+                                                $tabla = $row->tabla;
+                                                $fecha = $row->fecha;
+                                                
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $id_Bitacora; ?></td>
+                                                    <td><?php echo $accion; ?></td>
+                                                    <td><?php echo $tabla; ?></td>
+                                                    <td><?php echo $fecha; ?></td>
+                                                    
+                                                    
+                                                </tr>
+                                            <?php
+                                            }
+
+                                            
+
+
+                                            ?>
+                                           
+                                           
+
+
+                                        </tbody>
+                                    </table>
+
+
+
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                            
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+            </section>
               </div>
+
               
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <section class="content">
-          <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    
-                    <h3>150</h3>
-
-                    <p>Ordenes</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="#" class="small-box-footer"
-                    >Más información <i class="fas fa-arrow-circle-right"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                  <div class="inner">
-                    <h3>568</h3>
-
-                    <p>Visitantes</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                  </div>
-                  <a href="#" class="small-box-footer"
-                    >Más información <i class="fas fa-arrow-circle-right"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-teal">
-                  <div class="inner">
-                    <h3>44</h3>
-
-                    <p>Clientes</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                  </div>
-                  <a href="#" class="small-box-footer"
-                    >Más información<i class="fas fa-arrow-circle-right"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3>35</h3>
-
-                    <p>Productos</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                  </div>
-                  <a href="#" class="small-box-footer"
-                    >Más información<i class="fas fa-arrow-circle-right"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- ./col -->
-            </div>
-            <!-- /.row -->
-            <!-- Main row -->
-            
-            <!-- /.row (main row) -->
-          </div>
-          <!-- /.container-fluid -->
-        </section>
-
-        <div class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Resumen:</h1>
-              </div>
-              
-              
-              <!-- /.col -->
-              
-            </div>
-            <!-- /.row -->
-
-            <div class="card bg-gradient-info">
-              <div class="card-header border-0">
-                <h3 class="card-title">
-                  <i class="fas fa-th mr-1"></i>
-                  Sales Graph
-                </h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer bg-transparent">
-                <div class="row">
-                  <div class="col-4 text-center">
-                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
-                           data-fgColor="#39CCCC">
-
-                    <div class="text-white">Mail-Orders</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
-                           data-fgColor="#39CCCC">
-
-                    <div class="text-white">Online</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
-                           data-fgColor="#39CCCC">
-
-                    <div class="text-white">In-Store</div>
-                  </div>
-                  <!-- ./col -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.card-footer -->
-            </div>
-          </div>
-          <!-- /.container-fluid -->
           
         </div>
         
@@ -441,5 +363,6 @@
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
+    <script type="text/javascript" src="validacionE.js"></script>
   </body>
 </html>
