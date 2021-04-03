@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
@@ -195,7 +197,7 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form>
+          <form action="createLaptop.php" method="POST">
             <div class="card-body">
 
               <div class="input-group row col-auto mb-4">
@@ -209,24 +211,30 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-cube"></i></span>
                 </div>
-                <input type="number" class="form-control col-2" placeholder="Cantidad" name='cantidad'>
+                <input type="number" class="form-control col-2" placeholder="Cantidad" name='cantidad' id="cantidad">
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-hand-holding-medical"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="Condición" name='condicion'>
-                  <option> Condición</option>
+                <select class="form-control select2" type="text" placeholder="Condición" name='condicion' id="condicion">
+                  <option selected="selected">Condición</option>
                   <option>Nuevo</option>
                   <option>Reacondicionado</option>
                   <option>Usado</option>
+                </select>
+                <select class="form-control select2" type="text" placeholder="Disponibilidad" name='disponibilidad' id="disponibilidad">
+                  <option selected="selected">Disponibilidad</option>
+                  <option>Si</option>
+                  <option>No</option>
+                  
                 </select>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-building"></i></span>
                 </div>
-                <select class="form-control select2" type="text" placeholder="Fabricante" name='fabricante'>
-                  <option> Fabricante</option>
+                <select class="form-control select2" type="text" placeholder="Fabricante" name='id_fabricante' id="id_fabricante">
+                  <option selected="selected">Fabricante</option>
                   <option>Asus</option>
                   <option>Dell</option>
                   <option>HP</option>
@@ -242,31 +250,45 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-barcode"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Modelo" name='modelo'>
+                <input type="text" class="form-control" placeholder="Modelo" name='modelo' id="modelo">
 
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
                 </div>
-                <input type="number" class="form-control" placeholder="Precio" name='precio'>
+                <input type="number" class="form-control" placeholder="Precio" name='precio' id="precio">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-image"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Imagen" name='imagen'>
+                <input type="text" class="form-control" placeholder="Imagen" name='imagen' id="imagen">
               </div>
 
               <div class="input-group mb-4">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-memory"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Gráficos " name='graficos'>
+                <input type="text" class="form-control" placeholder="Gráficos " name='graficos' id="graficos">
+              </div>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-cog"></i></span>
+                </div>
+                <select class="form-control select2" type="text" placeholder="Sistema" name='id_Sistema' id="id_Sistema">
+                  <option selected="selected">Sistema Operativo</option>
+                  <option>Windows 10 Home Edition</option>
+                  <option>Windows 10 Pro </option>
+                  <option>Windows 10 Enterprise</option>
+                  <option>Windows 10 Education</option>
+                  <option>Sierra</option>
+                  
+                </select>
               </div>
               <div class="input-group row col-auto mb-4">
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-memory"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="RAM" name='ram'>
-                  <option> RAM </option>
+                <select class="form-control select2" type="text" placeholder="RAM" name='ram' id="ram">
+                  <option selected="selected">RAM</option>
                   <option>4 GB</option>
                   <option>8 GB</option>
                   <option>16 GB</option>
@@ -279,8 +301,8 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="Almacenamiento Principal" name='almacenamientoPrincipal'>
-                  <option> Almacenamiento Principal </option>
+                <select class="form-control select2" type="text" placeholder="Almacenamiento Principal" name='almacenamientoPrincipal' id="almacenamientoPrincipal">
+                  <option selected="selected">Almacenamiento Principal</option>
                   <option>124 GB SSD</option>
                   <option>500 GB SSD</option>
                   <option>1 TB SSD</option>
@@ -296,9 +318,9 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" placeholder="Almacenamiento Secundario" name='almacenamientoSecundario'>
-                  <option> Almacenamiento Secundario </option>
-                  <option>124 GB SSD/option>
+                <select class="form-control select2" type="text" placeholder="Almacenamiento Secundario" name='almacenamientoSecundario' id="almacenamientoSecundario">
+                  <option selected="selected">Almacenamiento Secundario</option>
+                  <option>124 GB SSD</option>
                   <option>500 GB SSD</option>
                   <option>1 TB SSD</option>
                   <option>124 GB HDD </option>
@@ -319,8 +341,8 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <select class="form-control select2" type="text" name='id_Familia'>
-                  <option> Familia </option>
+                <select class="form-control select2" type="text" name='id_Familia' id="id_Familia">
+                  <option selected="selected">Familia</option>
                   <option>Intel i9 </option>
                   <option> Intel i7 </option>
                   <option> Intel i5 </option>
@@ -336,7 +358,7 @@
                   <span class="input-group-text "><i class="fas fa-hdd"></i></span>
                 </div>
 
-                <input type="text" class="form-control" placeholder="Modelo Procesador" name='id_Procesador'>
+                <input type="text" class="form-control" placeholder="Modelo Procesador" name='procesador' id="procesador">
                 
 
               </div>
@@ -347,8 +369,8 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-wifi"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='wifi'>
-                  <option>Wi-Fi</option>
+                <select class="form-control select2" type="text"  name='wifi' id="wifi">
+                  <option selected="selected">Wi-Fi</option>
                   <option>Si</option>
                   <option>No</option>
 
@@ -357,8 +379,8 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fab fa-bluetooth-b"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='bluetooth'>
-                  <option>Bluetooth</option>
+                <select class="form-control select2" type="text"  name='bluetooth' id="bluetooth">
+                  <option selected="selected">Bluetooth</option>
                   <option>Si</option>
                   <option>No</option>
 
@@ -367,8 +389,8 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-microphone"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='microfono'>
-                  <option>Microfono</option>
+                <select class="form-control select2" type="text"  name='microfono' id="microfono">
+                  <option selected="selected">Microfono</option>
                   <option>Si</option>
                   <option>No</option>
 
@@ -377,8 +399,8 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-camera"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='camara'>
-                  <option>Cámara</option>
+                <select class="form-control select2" type="text"  name='camara' id="camara">
+                  <option selected="selected">Camara</option>
                   <option>Si</option>
                   <option>No</option>
 
@@ -387,8 +409,8 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-volume-up"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='altavoces'>
-                  <option>Altavoces</option>
+                <select class="form-control select2" type="text"  name='altavoces' id="altavoces">
+                  <option selected="selected">Altavoces</option>
                   <option>Si</option>
                   <option>No</option>
 
@@ -397,18 +419,18 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-keyboard"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='teclado'>
-                  <option>Teclado</option>
-                  <option>Si</option>
-                  <option>No</option>
+                <select class="form-control select2" type="text"  name='teclado' id="teclado">
+                  <option selected="selected">Teclado</option>
+                  <option>Español</option>
+                  <option>Inglés</option>
 
                 </select>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-compact-disc"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='unidadOptica'>
-                  <option>Unidad Óptica</option>
+                <select class="form-control select2" type="text"  name='unidadOptica' id="unidadOptica">
+                  <option selected="selected">Unidad Óptica</option>
                   <option>Si</option>
                   <option>No</option>
 
@@ -421,7 +443,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-plug"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Puertos" name='puertos'>
+                <input type="text" class="form-control" placeholder="Puertos" name='puertos' id="puertos">
               </div>
 
               <div class="input-group mb-4">
@@ -429,9 +451,9 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-life-ring"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='garantia'>
+                <select class="form-control select2" type="text"  name='garantia' id="garantia">
                   <option>Garantía</option>
-                  <option>1 año directo con provedor</option>
+                  <option>1 año directo con proveedor</option>
                   <option>No</option>
 
                 </select>
@@ -443,7 +465,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-battery-full"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Capacidad de Batería" name='bateria'>
+                <input type="text" class="form-control" placeholder="Capacidad de Batería" name='bateria' id="bateria">
               </div>
 
 
@@ -452,70 +474,42 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-wifi"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
-                  <option>Resolución</option>
-                  <option>Si</option>
-                  <option>No</option>
+                <select class="form-control select2" type="text"  name='resolucion' id="resolucion">
+                  <option selected="selected">Resolución</option>
+                  <option>1920x1080</option>
+                  <option>1366x768</option>
+                  <option>1366x720</option>
+                  <option>3840x2160</option>
 
                 </select>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fab fa-bluetooth-b"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
-                  <option>Táctil</option>
-                  <option>Si</option>
-                  <option>No</option>
+                <select class="form-control select2" type="text"  name='tamaño' id="tamaño">
+                  <option selected="selected">Tamaño</option>
+                  <option>12"-14"</option>
+                  <option>15"-17"</option>
+                  <option>18" o más</option>
 
                 </select>
 
                 <div class="input-group-prepend">
                   <span class="input-group-text "><i class="fas fa-microphone"></i></span>
                 </div>
-                <select class="form-control select2" type="text"  name='condicion'>
-                  <option>Frecuencia</option>
-                  <option>Si</option>
-                  <option>No</option>
+                <select class="form-control select2" type="text"  name='frecuencia' id="frecuencia">
+                  <option selected="selected">Frecuencia</option>
+                  <option>60 Hz</option>
+                  <option>120 Hz</option>
+                  <option>244 Hz</option>
 
                 </select>
 
-                <div class="input-group-prepend">
-                  <span class="input-group-text "><i class="fas fa-camera"></i></span>
-                </div>
-                <select class="form-control select2" type="text"  name='condicion'>
-                  <option>Acabado Pantalla</option>
-                  <option>Si</option>
-                  <option>No</option>
-
-                </select>
-
-                <div class="input-group-prepend">
-                  <span class="input-group-text "><i class="fas fa-volume-up"></i></span>
-                </div>
-                <select class="form-control select2" type="text"  name='condicion'>
-                  <option>Tamaño</option>
-                  <option>Si</option>
-                  <option>No</option>
-
-                </select>
-
-                
               </div>
-
-
-
-              
-              </div>
-
-              
-
-
-
-
 
               <div class="card-footer row">
                 <button type="submit" class="btn btn-danger col-2">Cancelar</button>
-                <button type="submit" class="btn btn-success col-10">Registrar</button>
+                <button type="submit"  id="createLaptop" name="CLaptop"  class="btn btn-success col-10">Registrar</button>
               </div>
           </form>
         </div>
@@ -573,6 +567,7 @@
   <script src="dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="dist/js/pages/dashboard.js"></script>
+  <script type="text/javascript" src="validacionL.js"></script>
 </body>
 
 </html>

@@ -25,13 +25,6 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-
-    public function countCliente()
-    {
-        $sql = "SELECT COUNT FROM cliente";
-        $res = mysqli_query($this->con, $sql);
-        return $res;
-    }
     public function readSexo()
     {
         $sql = "SELECT * FROM sexo";
@@ -50,11 +43,10 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
-    
 
     public function createCliente($nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
     {
-        $sha = sha1($contraseña);
+        $sha=sha1($contraseña);
         $sql = "INSERT INTO cliente (id_Cliente,id_Tipousuario, nombres, apellidos, edad, sexo, usuario, correo, contraseña, telefono,direccion) VALUES (NULL, 'A', '" . $nombres . "','" . $apellidos . "', $edad, (SELECT id_Sexo from sexo where sexo='" . $sexo . "'), '" . $usuario . "', '" . $correo . "', '" . $sha . "',  '" . $telefono . "', '" . $direccion . "' )";
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -65,9 +57,9 @@ class Database
         }
     }
 
-    public function createEmpleado($id_Tipousuario, $nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
+    public function createEmpleado($id_Tipousuario,$nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
     {
-        $sha = sha1($contraseña);
+        $sha=sha1($contraseña);
         $sql = "INSERT INTO empleado (id_Empleado,id_Tipousuario, nombres, apellidos, edad, sexo, usuario, correo, contraseña, telefono,direccion) VALUES (NULL, (SELECT id_Tipousuario from usuario where tipo='" . $id_Tipousuario . "'), '" . $nombres . "','" . $apellidos . "', $edad, (SELECT id_Sexo from sexo where sexo='" . $sexo . "'), '" . $usuario . "', '" . $correo . "', '" . $sha . "',  '" . $telefono . "', '" . $direccion . "' )";
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -75,46 +67,6 @@ class Database
             return true;
         } else {
             return $res;
-        }
-    }
-
-    public function createLaptop( $cantidad, $condicion, $disponibilidad, $id_fabricante, $modelo, $precio,$imagen, $id_Sistema, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $id_Familia, $procesador, $puertos, $wifi, $bluetooth, $garantia, $microfono, $camara, $altavoces, $teclado, $unidadOptica, $bateria)
-    {   
-        
-        $sql = "INSERT INTO laptop (id_Producto,cantidad,condicion,disponibilidad,id_fabricante,
-        modelo,precio,imagen,
-        id_Sistema,ram,graficos,almacenamientoPrincipal,almacenamientoSecundario,
-        id_Familia,procesador,puertos,wifi,bluetooth,garantia,microfono,camara,altavoces,teclado,
-        unidadOptica,bateria,id_Pantalla) VALUES (NULL,'".$cantidad."','".$condicion."','".$disponibilidad."',
-         (SELECT id_fabricante from fabricante where nombre='".$id_fabricante."'),'".$modelo."','".$precio."','".$imagen."',
-        (SELECT id_Sistema from sistema where nombre='".$id_Sistema."'),'".$ram."','".$graficos."',
-        '".$almacenamientoPrincipal."','".$almacenamientoSecundario."',
-        (SELECT id_Familia from familia where nombre ='".$id_Familia."'),'".$procesador."',
-        '".$puertos."',(SELECT id_Eleccion from eleccion where eleccion='".$wifi."'),
-        (SELECT id_Eleccion from eleccion where eleccion='".$bluetooth."'),'".$garantia."',
-        (SELECT id_Eleccion from eleccion where eleccion='".$microfono."'),
-        (SELECT id_Eleccion from eleccion where eleccion='".$camara."'),
-        (SELECT id_Eleccion from eleccion where eleccion='".$altavoces."'),
-        (SELECT id_Teclado from teclado where idioma='".$teclado."'),
-        (SELECT id_Eleccion from eleccion where eleccion='".$unidadOptica."'),
-        '".$bateria."',(SELECT id_Pantalla FROM pantalla ORDER BY id_Pantalla DESC LIMIT 1))";
-        $res = mysqli_query($this->con, $sql);
-        return $res;
-        if ($res) {
-            return true;
-        } else {
-            return $res;
-        }
-    }
-
-    public function createPantalla($tamaño,$resolucion,$frecuencia){
-        $sql = "INSERT INTO pantalla (id_Pantalla, tamaño, resolucion, frecuencia) VALUES (NULL,  '" . $tamaño . "','" . $resolucion . "',  '" . $frecuencia . "' )";
-        $res = mysqli_query($this->con, $sql);
-        return $res;
-        if ($res) {
-            return true;
-        } else {
-            echo mysqli_error($sql);
         }
     }
 

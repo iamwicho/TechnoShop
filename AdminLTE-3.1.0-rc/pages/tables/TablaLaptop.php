@@ -189,14 +189,15 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table class="table table-bordered" class="sorted">
+                                    <table class="table table-bordered" id="TLaptop" class="sorted">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>Stock</th>
+                                                <th>Modelo</th>
                                                 <th>Condicion</th>
                                                 <th>Disponibilidad</th>
                                                 <th>Fabricante</th>
-                                                <th>Modelo</th>
                                                 <th>Precio</th>
                                                 <th>Imagen</th>
                                                 <th>Sistema</th>
@@ -229,18 +230,19 @@
                                             <?php
                                             while ($row = mysqli_fetch_object($listado)) {
                                                 $id_Producto = $row->id_Producto;
+                                                $cantidad = $row->cantidad;
+                                                $modelo = $row->modelo;
                                                 $condicion = $row->condicion;
                                                 $disponibilidad = $row->disponibilidad;
                                                 $id_fabricante = $row->id_fabricante;
-                                                $modelo = $row->modelo;
                                                 $precio = $row->precio;
-                                                $id_Imagen = $row->id_Imagen;
+                                                $imagen = $row->imagen;
                                                 $id_Sistema = $row->id_Sistema;
                                                 $ram = $row->ram;
                                                 $graficos = $row->graficos;
                                                 $almacenamientoPrincipal = $row->almacenamientoPrincipal;
                                                 $almacenamientoSecundario = $row->almacenamientoSecundario;
-                                                $id_Procesador = $row->id_Procesador;
+                                                $procesador = $row->procesador;
                                                 $puertos = $row->puertos;
                                                 $wifi = $row->wifi;
                                                 $bluetooth = $row->bluetooth;
@@ -255,18 +257,19 @@
                                             ?>
                                                 <tr>
                                                     <td><?php echo $id_Producto; ?></td>
+                                                    <td><?php echo $cantidad; ?></td>
+                                                    <td><?php echo $modelo; ?></td>
                                                     <td><?php echo $condicion; ?></td>
                                                     <td><?php echo $disponibilidad; ?></td>
                                                     <td><?php echo $id_fabricante; ?></td>
-                                                    <td><?php echo $modelo; ?></td>
                                                     <td><?php echo $precio; ?></td>
-                                                    <td><?php echo $id_Imagen; ?></td>
+                                                    <td><?php echo $imagen; ?></td>
                                                     <td><?php echo $id_Sistema; ?></td>
                                                     <td><?php echo $ram; ?></td>
                                                     <td><?php echo $graficos; ?></td>
                                                     <td><?php echo $almacenamientoPrincipal; ?></td>
                                                     <td><?php echo $almacenamientoSecundario; ?></td>
-                                                    <td><?php echo $id_Procesador; ?></td>
+                                                    <td><?php echo $procesador; ?></td>
                                                     <td><?php echo $puertos; ?></td>
                                                     <td><?php echo $wifi; ?></td>
                                                     <td><?php echo $bluetooth; ?></td>
@@ -361,13 +364,8 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+            
+            $('#TLaptop').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
@@ -409,15 +407,15 @@
                 ).get();
                 console.log(data);
                 $('#update_idL').val(data[0]);
-                $('#condicion').val(data[1]);
-                $('#disponibilidad').val(data[2]);
-                $('#modelo').val(data[4]);
-                $('#ram').val(data[8]);
-                $('#graficos').val(data[9]);
-                $('#almacenamientoPrincipal').val(data[10]);
-                $('#almacenamientoSecundario').val(data[11]);
-                $('#puertos').val(data[13]);
-                $('#bateria').val(data[22]);
+                $('#condicion').val(data[3]);
+                $('#disponibilidad').val(data[4]);
+                $('#modelo').val(data[2]);
+                $('#ram').val(data[9]);
+                $('#graficos').val(data[10]);
+                $('#almacenamientoPrincipal').val(data[11]);
+                $('#almacenamientoSecundario').val(data[12]);
+                $('#puertos').val(data[14]);
+                $('#bateria').val(data[23]);
                 
             })
         }
