@@ -1,75 +1,32 @@
 <?php
+ob_start();
+//Para iniciar sesión
+if (isset($_POST["btnlogin"])) {
+    require_once '../tables/database.php';
+    $link = mysqli_connect("localhost", "root", "", "technoshop");
+    $usuario = $_POST["usuario"];
+    $pass     = $_POST["contraseña"];
 
-class Database
-{
 
-    public function login()
-    {
+    $queryusuario = mysqli_query($link, "SELECT * FROM empleado WHERE usuario = '" . $usuario . "'");
+    $nr         = mysqli_num_rows($queryusuario);
+    $mostrar    = mysqli_fetch_array($queryusuario);
+    $password=$mostrar['contraseña'];
+    $passhash=password_hash($pass, PASSWORD_BCRYPT);
+   
 
-        $conn = new mysqli("localhost","root","","technoshop");
-	
-        if($conn->connect_errno)
-        {
-              echo "No hay conexión: (" . $conn->connect_errno . ") " . $conn->connect_error;
-        }
-        //include('conexion.php');
-
-        $nombreUsuario = $_POST["txtusuario"];
-        $contraseña 	= $_POST["txtpassword"];
+    if (($nr == 1) && (password_verify($pass,$mostrar['contraseña'])) )
+    {   
         
-        if(isset($_POST["btnloginx"]))
-        {
-        
-        $queryusuario = mysqli_query($conn,"SELECT * FROM login WHERE nombreUsuario = '$nombreUsuario'");
-        $nr 		= mysqli_num_rows($queryusuario); 
-        $mostrar	= mysqli_fetch_array($queryusuario); 
-            
-        if (($nr == 1) && (password_verify($contraseña,$mostrar['contraseña'])) )
-            { 
-                session_start();
-                $_SESSION['nombredelusuario']=$nombre;
-                header("Location: principal.php");
-            }
-        else
-            {
-            echo "<script> alert('Usuario o contraseña incorrecto.');window.location= 'index.html' </script>";
-            }
+        session_start();
+		$_SESSION['usuario']=$usuario;
+        if($mostrar['id_Tipousuario']=='911-A'){
+            $_SESSION['rol']='Soporte Cliente';
         }
-    }
-
-    public function register()
-    {
-
-            if(isset($_POST["btnregistrarx"]))
-            {
-
-            $queryusuario 	= mysqli_query($conn,"SELECT * FROM login WHERE usu = '$nombre'");
-            $nr 			= mysqli_num_rows($queryusuario); 
-
-            if ($nr == 0)
-            {
-
-                $pass_fuerte = password_hash($pass, PASSWORD_BCRYPT);
-                $queryregistrar = "INSERT INTO login(usu, pass) values ('$nombre','$pass_fuerte')";
-                
-
-            if(mysqli_query($conn,$queryregistrar))
-            {
-                echo "<script> alert('Usuario registrado: $nombre');window.location= 'index.html' </script>";
-            }
-            else 
-            {
-                echo "Error: " .$queryregistrar."<br>".mysql_error($conn);
-            }
-
-            }else
-            {
-                echo "<script> alert('No puedes registrar a este usuario: $nombre');window.location= 'index.html' </script>";
-            }
-
-            } 
-
+        
+        header('location: ../../admin.php');
+       
+    } else {
+        echo "<script> alert('Usuario o contraseña incorrecto.'); window.location= 'login-v2.html' </script>";
     }
 }
-
-?>

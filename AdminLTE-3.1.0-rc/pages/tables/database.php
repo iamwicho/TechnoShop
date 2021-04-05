@@ -68,7 +68,7 @@ class Database
 
     public function createCliente($nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
     {
-        $sha = sha1($contraseña);
+        $sha = password_hash($contraseña, PASSWORD_BCRYPT);
         $sql = "INSERT INTO cliente (id_Cliente,id_Tipousuario, nombres, apellidos, edad, sexo, usuario, correo, contraseña, telefono,direccion) VALUES (NULL, 'A', '" . $nombres . "','" . $apellidos . "', $edad, (SELECT id_Sexo from sexo where sexo='" . $sexo . "'), '" . $usuario . "', '" . $correo . "', '" . $sha . "',  '" . $telefono . "', '" . $direccion . "' )";
         $res = mysqli_query($this->con, $sql);
         return $res;
@@ -81,7 +81,7 @@ class Database
 
     public function createEmpleado($id_Tipousuario, $nombres, $apellidos, $usuario, $contraseña, $edad, $sexo, $correo, $telefono, $direccion)
     {
-        $sha = sha1($contraseña);
+        $sha = password_hash($contraseña, PASSWORD_BCRYPT);
         $sql = "INSERT INTO empleado (id_Empleado,id_Tipousuario, nombres, apellidos, edad, sexo, usuario, correo, contraseña, telefono,direccion) VALUES (NULL, (SELECT id_Tipousuario from usuario where tipo='" . $id_Tipousuario . "'), '" . $nombres . "','" . $apellidos . "', $edad, (SELECT id_Sexo from sexo where sexo='" . $sexo . "'), '" . $usuario . "', '" . $correo . "', '" . $sha . "',  '" . $telefono . "', '" . $direccion . "' )";
         $res = mysqli_query($this->con, $sql);
         return $res;

@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+ob_start();
+session_start();
+
+if (isset($_SESSION['usuario'])) {
+    $usuarioingresado = $_SESSION['usuario'];
+    $rol = $_SESSION['rol'];
+}
+?>
 
 <head>
     <meta charset="utf-8" />
@@ -67,8 +76,9 @@
                         <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="" class="d-block">Iamwicho_o</a>
-                        <a class="d-block">Admin</a>
+
+                        <a href="" class="d-block"><?php echo $usuarioingresado; ?></a>
+                        <a class="d-block"><?php echo $rol; ?></a>
                     </div>
                 </div>
 
@@ -189,6 +199,25 @@
 
 
 
+                        <footer class="footer">
+                            <div class="container">
+
+                                <form method="POST">
+                                    <tr>
+                                        <button type="submit" name="btncerrar" class="btn btn-primary">Cerrar sesión</button>
+                                    </tr>
+                                </form>
+                                <?php
+                                if (isset($_POST['btncerrar'])) {
+
+                                    session_destroy();
+                                    header('location: pages/examples/login-v2.html');
+                                }
+                                ?>
+                            </div>
+                        </footer>
+
+
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -258,14 +287,14 @@
                                     $numc = new Database();
                                     $listado = $numc->countCliente();
                                     ?>
-                                    <h3><?php echo $listado;?></h3>
+                                    <h3><?php echo $listado; ?></h3>
 
                                     <p>Clientes</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Más información<i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="pages/tables/TablaCliente.php" class="small-box-footer">Más información<i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -273,18 +302,17 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                <?php
-                                   
+                                    <?php
                                     $listadol = $numc->countLaptop();
                                     ?>
-                                    <h3><?php echo $listadol;?></h3>
+                                    <h3><?php echo $listadol; ?></h3>
 
                                     <p>Productos</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Más información<i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="pages/tables/TablaLaptop.php" class="small-box-footer">Más información<i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -373,6 +401,7 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
+
     <!-- ./wrapper -->
 
     <!-- jQuery -->
