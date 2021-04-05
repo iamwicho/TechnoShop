@@ -187,7 +187,7 @@ if (isset($_SESSION['usuario'])) {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="bitacora.php" class="nav-link ">
+                            <a href="pages/tables/bitacora.php" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Bitácora

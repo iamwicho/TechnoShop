@@ -28,7 +28,7 @@
                 <div class="container-fluid">
                     <div class="row mb-12">
                         <div>
-                            <h1>Registros de la Tabla Laptop</h1>
+                            <h1>Bitácora de movimientos</h1>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -113,7 +113,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Tablas
@@ -134,7 +134,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../tables/TablaLaptop.php" class="nav-link active ">
+                                    <a href="../tables/TablaLaptop.php" class="nav-link ">
                                         <i class="fas fa-laptop nav-icon"></i>
                                         <p>Laptop</p>
                                     </a>
@@ -167,15 +167,15 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="bitacora.php" class="nav-link ">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>
-                                    Bitácora
-                                    <i class="right fas "></i>
-                                </p>
-                            </a>
-
-                        </li>
+                    <a href="bitacora.php" class="nav-link active">
+                      <i class="nav-icon fas fa-book"></i>
+                      <p>
+                        Bitácora
+                        <i class="right fas "></i>
+                      </p>
+                    </a>
+                    
+                  </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -199,34 +199,14 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table class="table table-bordered" id="TLaptop" class="sorted">
+                                <table id="TBitacora" class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Stock</th>
-                                                <th>Modelo</th>
-                                                <th>Condicion</th>
-                                                <th>Disponibilidad</th>
-                                                <th>Fabricante</th>
-                                                <th>Precio</th>
-                                                <th>Imagen</th>
-                                                <th>Sistema</th>
-                                                <th>RAM</th>
-                                                <th>Graficos</th>
-                                                <th>Almacenamiento Principal</th>
-                                                <th>Almacenamiento Secundario</th>
-                                                <th>Procesador</th>
-                                                <th>Puertos</th>
-                                                <th>Wi-fi</th>
-                                                <th>Bluetooth</th>
-                                                <th>Garantia</th>
-                                                <th>Microfono</th>
-                                                <th>Camara</th>
-                                                <th>Altavoces</th>
-                                                <th>Teclado</th>
-                                                <th>Unidad optica</th>
-                                                <th>Bateria</th>
-                                                <th>Pantalla</th>
+                                                <th>Accion</th>
+                                                <th>Tabla</th>
+                                                <th>Fecha</th>
+                                                
                                             </tr>
                                         </thead>
 
@@ -234,101 +214,46 @@
 
                                             <?php
                                             include('database.php');
-                                            $laptop = new Database();
-                                            $listado = $laptop->readLaptop();
+                                            $bitacora = new Database();
+                                            $listado = $bitacora->readBitacora();
                                             ?>
                                             <?php
                                             while ($row = mysqli_fetch_object($listado)) {
-                                                $id_Producto = $row->id_Producto;
-                                                $cantidad = $row->cantidad;
-                                                $modelo = $row->modelo;
-                                                $condicion = $row->condicion;
-                                                $disponibilidad = $row->disponibilidad;
-                                                $id_fabricante = $row->id_fabricante;
-                                                $precio = $row->precio;
-                                                $id_Imagen = $row->id_Imagen;
-                                                $id_Sistema = $row->id_Sistema;
-                                                $ram = $row->ram;
-                                                $graficos = $row->graficos;
-                                                $almacenamientoPrincipal = $row->almacenamientoPrincipal;
-                                                $almacenamientoSecundario = $row->almacenamientoSecundario;
-                                                $procesador = $row->procesador;
-                                                $puertos = $row->puertos;
-                                                $wifi = $row->wifi;
-                                                $bluetooth = $row->bluetooth;
-                                                $garantia = $row->garantia;
-                                                $microfono = $row->microfono;
-                                                $camara = $row->camara;
-                                                $altavoces = $row->altavoces;
-                                                $teclado = $row->teclado;
-                                                $unidadOptica = $row->unidadOptica;
-                                                $bateria = $row->bateria;
-                                                $id_Pantalla = $row->id_Pantalla;
+                                                $id_Bitacora = $row->id_Bitacora;
+                                                $accion = $row->accion;
+                                                $tabla = $row->tabla;
+                                                $fecha = $row->fecha;
+                                                
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $id_Producto; ?></td>
-                                                    <td><?php echo $cantidad; ?></td>
-                                                    <td><?php echo $modelo; ?></td>
-                                                    <td><?php echo $condicion; ?></td>
-                                                    <td><?php echo $disponibilidad; ?></td>
-                                                    <td><?php echo $id_fabricante; ?></td>
-                                                    <td><?php echo $precio; ?></td>
-                                                    <td><?php echo $id_Imagen; ?></td>
-                                                    <td><?php echo $id_Sistema; ?></td>
-                                                    <td><?php echo $ram; ?></td>
-                                                    <td><?php echo $graficos; ?></td>
-                                                    <td><?php echo $almacenamientoPrincipal; ?></td>
-                                                    <td><?php echo $almacenamientoSecundario; ?></td>
-                                                    <td><?php echo $procesador; ?></td>
-                                                    <td><?php echo $puertos; ?></td>
-                                                    <td><?php echo $wifi; ?></td>
-                                                    <td><?php echo $bluetooth; ?></td>
-                                                    <td><?php echo $garantia; ?></td>
-                                                    <td><?php echo $microfono; ?></td>
-                                                    <td><?php echo $camara; ?></td>
-                                                    <td><?php echo $altavoces; ?></td>
-                                                    <td><?php echo $teclado; ?></td>
-                                                    <td><?php echo $unidadOptica; ?></td>
-                                                    <td><?php echo $bateria; ?></td>
-                                                    <td><?php echo $id_Pantalla; ?></td>
-
-                                                    <td>
-                                                        <a class="edit-btnL" title="Editar" data-toggle="tooltip"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                        <a class="delete-btnL" title="Eliminar" data-toggle="modal" data-target="#MDLap"><i class="fas fa-trash-alt">&#xE872;</i></a>
-                                                    </td>
+                                                    <td><?php echo $id_Bitacora; ?></td>
+                                                    <td><?php echo $accion; ?></td>
+                                                    <td><?php echo $tabla; ?></td>
+                                                    <td><?php echo $fecha; ?></td>
+                                                    
+                                                    
                                                 </tr>
                                             <?php
                                             }
-                                            include 'MULaptop.php'
+
+                                            
+
+
                                             ?>
+                                           
+                                           
+
+
                                         </tbody>
                                     </table>
-                                    <div id="MDLap" class="modal fade" data-backdrop="static" data-keyboard="false">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3>Eliminar registro de <b>Laptop</b></h3>
-                                                </div>
-                                                <form action="deleteLaptop.php" method="POST">
-                                                    <div class="modal-body">
 
-                                                        <input type="hidden" name="delete_idL" id="delete_idL">
-                                                        <p>Estas seguro que deseas borrar este elemento?</p>
 
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                                        <input type="submit" name="deleteLaptop" class="btn btn-danger" value="Eliminar">
-                                                    </div>
 
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <!-- /.card-body -->
                                 </div>
                                 <!-- /.card -->
                             </div>
+                            
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -375,10 +300,10 @@
     <script>
         $(function() {
 
-            $('#TLaptop').DataTable({
+            $('#TBitacora').DataTable({
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
+                "lengthChange":true,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
@@ -386,50 +311,8 @@
             });
         });
     </script>
-
-    <script>
-        $(document).ready(function() {
-                $('.delete-btnL').on('click', function() {
-
-                    $('#MDLap').modal('show');
-                    $tr = $(this).closest('tr');
-                    var data = $tr.children("td").map(function() {
-                        return $(this).text();
-                    }).get();
-                    console.log(data);
-                    $('#delete_idL').val(data[0]);
-                })
-            }
-
-        )
-    </script>
-
-    <script>
-        $(document).ready(function() {
-                $('.edit-btnL').on('click', function() {
-
-                    $('#MULaptop').modal('show');
-                    $tr = $(this).closest('tr');
-                    var data = $tr.children("td").map(function() {
-                        return $(this).text();
-                    }).get();
-                    console.log(data);
-                    $('#update_idL').val(data[0]);
-                    $('#condicion').val(data[3]);
-                    $('#disponibilidad').val(data[4]);
-                    $('#modelo').val(data[2]);
-                    $('#ram').val(data[9]);
-                    $('#graficos').val(data[10]);
-                    $('#almacenamientoPrincipal').val(data[11]);
-                    $('#almacenamientoSecundario').val(data[12]);
-                    $('#puertos').val(data[14]);
-                    $('#bateria').val(data[23]);
-
-                })
-            }
-
-        )
-    </script>
+   
+    
 
 </body>
 

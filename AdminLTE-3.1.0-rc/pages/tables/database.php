@@ -51,6 +51,12 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+    public function readPedido()
+    {
+        $sql = "SELECT * FROM pedido INNER JOIN estado ON pedido.id_Estado=estado.id_Estado";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
     public function readLaptop()
     {
         $sql = "SELECT * FROM laptop";
@@ -92,15 +98,16 @@ class Database
         }
     }
 
-    public function createLaptop( $cantidad, $condicion, $disponibilidad, $id_fabricante, $modelo, $precio,$imagen, $id_Sistema, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $id_Familia, $procesador, $puertos, $wifi, $bluetooth, $garantia, $microfono, $camara, $altavoces, $teclado, $unidadOptica, $bateria)
+    public function createLaptop( $cantidad, $condicion, $disponibilidad, $id_fabricante, $modelo, $precio, $id_Sistema, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $id_Familia, $procesador, $puertos, $wifi, $bluetooth, $garantia, $microfono, $camara, $altavoces, $teclado, $unidadOptica, $bateria)
     {   
         
         $sql = "INSERT INTO laptop (id_Producto,cantidad,condicion,disponibilidad,id_fabricante,
-        modelo,precio,imagen,
+        modelo,precio,id_Imagen,
         id_Sistema,ram,graficos,almacenamientoPrincipal,almacenamientoSecundario,
         id_Familia,procesador,puertos,wifi,bluetooth,garantia,microfono,camara,altavoces,teclado,
         unidadOptica,bateria,id_Pantalla) VALUES (NULL,'".$cantidad."','".$condicion."','".$disponibilidad."',
-         (SELECT id_fabricante from fabricante where nombre='".$id_fabricante."'),'".$modelo."','".$precio."','".$imagen."',
+         (SELECT id_fabricante from fabricante where nombre='".$id_fabricante."'),'".$modelo."','".$precio."',
+         (SELECT id_Imagen FROM imagen ORDER BY id_Imagen DESC LIMIT 1),
         (SELECT id_Sistema from sistema where nombre='".$id_Sistema."'),'".$ram."','".$graficos."',
         '".$almacenamientoPrincipal."','".$almacenamientoSecundario."',
         (SELECT id_Familia from familia where nombre ='".$id_Familia."'),'".$procesador."',
@@ -123,6 +130,17 @@ class Database
 
     public function createPantalla($tamaño,$resolucion,$frecuencia){
         $sql = "INSERT INTO pantalla (id_Pantalla, tamaño, resolucion, frecuencia) VALUES (NULL,  '" . $tamaño . "','" . $resolucion . "',  '" . $frecuencia . "' )";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+        if ($res) {
+            return true;
+        } else {
+            echo mysqli_error($sql);
+        }
+    }
+
+    public function createImagen($imagen1,$imagen2,$imagen3,$imagen4,$imagen5){
+        $sql = "INSERT INTO imagen (id_Imagen, imagen1, imagen2, imagen3, imagen4, imagen5) VALUES (NULL,  '" . $imagen1 . "','" . $imagen2 . "',  '" . $imagen3 . "',  '" . $imagen4 . "',  '" . $imagen5 . "' )";
         $res = mysqli_query($this->con, $sql);
         return $res;
         if ($res) {
@@ -190,6 +208,17 @@ class Database
     public function updateLaptop($id_Producto, $condicion, $disponibilidad, $modelo, $ram, $graficos, $almacenamientoPrincipal, $almacenamientoSecundario, $puertos, $bateria)
     {
         $sql =  "UPDATE laptop SET condicion = '" . $condicion . "', disponibilidad='" . $disponibilidad . "', modelo='" . $modelo . "',ram='" . $ram . "',graficos='" . $graficos . "',almacenamientoPrincipal='" . $almacenamientoPrincipal . "',almacenamientoSecundario='" . $almacenamientoSecundario . "',puertos='" . $puertos . "', bateria='" . $bateria . "' WHERE id_Producto = '" . $id_Producto . "' ";
+        $res = mysqli_query($this->con, $sql);
+        if ($res) {
+            return true;
+        } else {
+            echo $res;
+        }
+    }
+
+    public function updatePedido($id_Pedido,$id_Estado)
+    {
+        $sql =  "UPDATE pedido SET id_Estado = (SELECT id_Estado from estado WHERE estado='" . $id_Estado . "') WHERE id_Pedido = '" . $id_Pedido . "' ";
         $res = mysqli_query($this->con, $sql);
         if ($res) {
             return true;
