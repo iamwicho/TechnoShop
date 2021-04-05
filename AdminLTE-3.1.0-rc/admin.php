@@ -196,6 +196,15 @@ if (isset($_SESSION['usuario'])) {
                             </a>
 
                         </li>
+                        <li class="nav-item">
+                            <a href="pages/tables/ordenes.php" class="nav-link ">
+                                <i class="nav-icon fas fa-box"></i>
+                                <p>
+                                    Órdenes
+                                    <i class="right fas "></i>
+                                </p>
+                            </a>
+                        </li>
 
 
 
@@ -251,10 +260,12 @@ if (isset($_SESSION['usuario'])) {
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-
-                                    <h3>153</h3>
-
-                                    <p>Ordenes</p>
+                                    <?php
+                                    include('pages/tables/database.php');
+                                    $numc = new Database();
+                                    $listadop = $numc->countPedido();
+                                    ?>
+                                    <h3><?php echo $listadop; ?></h3 <p>Ordenes</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
@@ -283,8 +294,7 @@ if (isset($_SESSION['usuario'])) {
                             <div class="small-box bg-teal">
                                 <div class="inner">
                                     <?php
-                                    include('pages/tables/database.php');
-                                    $numc = new Database();
+
                                     $listado = $numc->countCliente();
                                     ?>
                                     <h3><?php echo $listado; ?></h3>

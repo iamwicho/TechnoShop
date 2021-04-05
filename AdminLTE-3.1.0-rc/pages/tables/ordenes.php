@@ -167,24 +167,25 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                    <a href="bitacora.php" class="nav-link ">
-                      <i class="nav-icon fas fa-book"></i>
-                      <p>
-                        Bitácora
-                        <i class="right fas "></i>
-                      </p>
-                    </a>
-                    
-                  </li>
-                  <li class="nav-item">
-                    <a href="bitacora.php" class="nav-link active">
-                      <i class="nav-icon fas fa-box"></i>
-                      <p>
-                       Órdenes
-                        <i class="right fas "></i>
-                      </p>
-                    </a>
-                    
+                            <a href="bitacora.php" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Bitácora
+                                    <i class="right fas "></i>
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="ordenes.php" class="nav-link active">
+                                <i class="nav-icon fas fa-box"></i>
+                                <p>
+                                    Órdenes
+                                    <i class="right fas "></i>
+                                </p>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -208,7 +209,7 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                <table id="TBitacora" class="table table-bordered ">
+                                    <table id="TBitacora" class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -222,8 +223,8 @@
                                                 <th>Fecha de compra</th>
                                                 <th>Total</th>
                                                 <th>Estado de compra</th>
-                                                
-                                                
+
+
                                             </tr>
                                         </thead>
 
@@ -248,7 +249,7 @@
                                                 $total = $row->total;
                                                 $estado = $row->estado;
 
-                                                
+
                                             ?>
                                                 <tr>
                                                     <td><?php echo $id_Pedido; ?></td>
@@ -261,22 +262,22 @@
                                                     <td><?php echo $direccion; ?></td>
                                                     <td><?php echo $fecha; ?></td>
                                                     <td><?php echo $total; ?></td>
-                                                    <td><?php echo $estado; ?> 
-                                                    <a  class="edit-btnP" title="Editar" data-toggle="modal"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                </td>
-                                                    
-                                                    
+                                                    <td><?php echo $estado; ?>
+                                                        <a class="edit-btnP" title="Editar" data-toggle="modal"><i class="fas fa-pencil-alt">&#xE254;</i></a>
+                                                    </td>
+
+
                                                 </tr>
                                             <?php
                                             }
                                             include 'MUPedido.php';
 
-                                            
+
 
 
                                             ?>
-                                           
-                                           
+
+
 
 
                                         </tbody>
@@ -288,7 +289,7 @@
                                 </div>
                                 <!-- /.card -->
                             </div>
-                            
+
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -337,7 +338,7 @@
 
             $('#TBitacora').DataTable({
                 "paging": true,
-                "lengthChange":true,
+                "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,
@@ -347,27 +348,26 @@
         });
     </script>
     <script>
-        $(document).ready (function(){
-            $('.edit-btnP').on('click',function(){
-                
-                $('#MUPedido').modal('show');
-                $tr=$(this).closest('tr');
-                var data=$tr.children("td").map(function(){
-                    return $(this).text();
-                }
-                ).get();
-                console.log(data);
-                $('#update_id').val(data[0]);
-                $('#id_Estado').val(data[10]);
-               
-                
-            })
-        }
+        $(document).ready(function() {
+                $('.edit-btnP').on('click', function() {
+
+                    $('#MUPedido').modal('show');
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+                    console.log(data);
+                    $('#update_id').val(data[0]);
+                    $('#id_Estado').val(data[10]);
+
+
+                })
+            }
 
         )
     </script>
-   
-    
+
+
 
 </body>
 

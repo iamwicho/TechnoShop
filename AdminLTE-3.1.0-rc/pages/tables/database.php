@@ -226,4 +226,12 @@ class Database
             echo $res;
         }
     }
+    public function countPedido()
+    {
+        $sql = "SELECT * FROM pedido";
+        $res = mysqli_query($this->con, $sql);
+        $filas=mysqli_num_rows($res);
+        return $filas;
+    }
+    
 }
