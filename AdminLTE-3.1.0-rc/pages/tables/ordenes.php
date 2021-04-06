@@ -28,7 +28,7 @@
                 <div class="container-fluid">
                     <div class="row mb-12">
                         <div>
-                            <h1>Registros de la Tabla Cliente</h1>
+                            <h1>Órdenes de compra</h1>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -108,18 +108,12 @@
                                         <p>Laptop</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="../../descuento.html" class="nav-link">
-                                        <i class="fas fa-dollar-sign nav-icon"></i>
-                                        <p>Descuento</p>
-                                    </a>
-                                </li>
 
 
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Tablas
@@ -128,7 +122,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../tables/TablaCliente.php" class="nav-link active">
+                                    <a href="../tables/TablaCliente.php" class="nav-link ">
                                         <i class="far fa-user nav-icon"></i>
                                         <p>Cliente</p>
                                     </a>
@@ -143,13 +137,6 @@
                                     <a href="../tables/TablaLaptop.php" class="nav-link ">
                                         <i class="fas fa-laptop nav-icon"></i>
                                         <p>Laptop</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="TablaDescuento.php" class="nav-link ">
-                                        <i class="fas fa-dollar-sign nav-icon"></i>
-                                        <p>Descuento</p>
                                     </a>
                                 </li>
                             </ul>
@@ -180,17 +167,16 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                    <a href="bitacora.php" class="nav-link ">
-                      <i class="nav-icon fas fa-book"></i>
-                      <p>
-                        Bitácora
-                        <i class="right fas "></i>
-                      </p>
-                    </a>
-                    
-                  </li>
+                            <a href="bitacora.php" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Bitácora
+                                    <i class="right fas "></i>
+                                </p>
+                            </a>
 
-                  <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a href="ordenes.php" class="nav-link active">
                                 <i class="nav-icon fas fa-box"></i>
                                 <p>
@@ -199,6 +185,7 @@
                                 </p>
                             </a>
                         </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -222,19 +209,22 @@
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="TCliente" class="table table-bordered ">
+                                    <table id="TBitacora" class="table table-bordered ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nombre</th>
-                                                <th>Apellidos</th>
-                                                <th>Edad</th>
-                                                <th>Sexo</th>
-                                                <th>Usuario</th>
-                                                <th>Correo</th>
-                                                <th>Teléfono</th>
-                                                <th>Dirección</th>
-                                                <th>Acciones</th>
+                                                <th>Cliente</th>
+                                                <th>Producto</th>
+                                                <th>Nombre del Cliente</th>
+                                                <th>Cantidad</th>
+                                                <th>Modelo</th>
+                                                <th>Precio</th>
+                                                <th>Direccion</th>
+                                                <th>Fecha de compra</th>
+                                                <th>Total</th>
+                                                <th>Estado de compra</th>
+
+
                                             </tr>
                                         </thead>
 
@@ -242,67 +232,52 @@
 
                                             <?php
                                             include('database.php');
-                                            $cliente = new Database();
-                                            $listado = $cliente->readCliente();
+                                            $pedido = new Database();
+                                            $listado = $pedido->readPedido();
                                             ?>
                                             <?php
                                             while ($row = mysqli_fetch_object($listado)) {
+                                                $id_Pedido = $row->id_Pedido;
                                                 $id_Cliente = $row->id_Cliente;
-                                                $nombres = $row->nombres;
-                                                $apellidos = $row->apellidos;
-                                                $edad = $row->edad;
-                                                $sexo = $row->sexo;
-                                                $usuario = $row->usuario;
-                                                $telefono = $row->telefono;
+                                                $id_Producto = $row->id_Producto;
+                                                $nombreCliente = $row->nombreCliente;
+                                                $cantidad = $row->cantidad;
+                                                $modelo = $row->modelo;
+                                                $precio = $row->precio;
                                                 $direccion = $row->direccion;
-                                                $correo = $row->correo
+                                                $fecha = $row->fecha;
+                                                $total = $row->total;
+                                                $estado = $row->estado;
+
+
                                             ?>
                                                 <tr>
+                                                    <td><?php echo $id_Pedido; ?></td>
                                                     <td><?php echo $id_Cliente; ?></td>
-                                                    <td><?php echo $nombres; ?></td>
-                                                    <td><?php echo $apellidos; ?></td>
-                                                    <td><?php echo $edad; ?></td>
-                                                    <td><?php echo $sexo; ?></td>
-                                                    <td><?php echo $usuario; ?></td>
-                                                    <td><?php echo $correo; ?></td>
-                                                    <td><?php echo $telefono; ?></td>
+                                                    <td><?php echo $id_Producto; ?></td>
+                                                    <td><?php echo $nombreCliente; ?></td>
+                                                    <td><?php echo $cantidad; ?></td>
+                                                    <td><?php echo $modelo; ?></td>
+                                                    <td><?php echo $precio; ?></td>
                                                     <td><?php echo $direccion; ?></td>
-                                                    <td>
-                                                        
-                                                        <a  class="edit-btnC" title="Editar" data-toggle="modal"><i class="fas fa-pencil-alt">&#xE254;</i></a>
-                                                        <a  class="delete-btnC" title="Eliminar" data-toggle="modal"><i class="fas fa-trash">&#xE872;</i></a>
+                                                    <td><?php echo $fecha; ?></td>
+                                                    <td><?php echo $total; ?></td>
+                                                    <td><?php echo $estado; ?>
+                                                        <a class="edit-btnP" title="Editar" data-toggle="modal"><i class="fas fa-pencil-alt">&#xE254;</i></a>
                                                     </td>
+
+
                                                 </tr>
                                             <?php
                                             }
+                                            include 'MUPedido.php';
 
-                                            include 'MUCliente.php'
+
 
 
                                             ?>
-                                           
-                                           <div id="MDCliente" class="modal fade" data-backdrop="static" data-keyboard="false">
-                                               <div class="modal-dialog">
-                                                   <div class="modal-content">
-                                                       <form action="deleteCliente.php" method="POST">
-                                                           <div class="modal-body">
-                                                               <input type="hidden" name="delete_id" id="delete_id"> 
-                                                            
-                                                            </input>
-                                                               <p>Estas seguro que deseas borrar este elemento?</p>
-                                                               <p>
-                                                                   
-                                                               </p>
-                                                           </div>
-                                                           <div class="modal-footer">
-                                                               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                                                               <input type="submit" name="deleteCliente" class="btn btn-danger" value="Eliminar">
-                                                           </div>
-       
-                                                       </form>
-                                                   </div>
-                                               </div>
-                                           </div>
+
+
 
 
                                         </tbody>
@@ -314,7 +289,7 @@
                                 </div>
                                 <!-- /.card -->
                             </div>
-                            
+
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -361,9 +336,9 @@
     <script>
         $(function() {
 
-            $('#TCliente').DataTable({
+            $('#TBitacora').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,
@@ -372,47 +347,27 @@
             });
         });
     </script>
-     <script>
-        $(document).ready (function(){
-            $('.delete-btnC').on('click',function(){
-                console.log("Hola");
-                $('#MDCliente').modal('show');
-                $tr=$(this).closest('tr');
-                var data=$tr.children("td").map(function(){
-                    return $(this).text();
-                }
-                ).get();
-                console.log(data);
-                $('#delete_id').val(data[0]);
-            })
-        }
+    <script>
+        $(document).ready(function() {
+                $('.edit-btnP').on('click', function() {
+
+                    $('#MUPedido').modal('show');
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+                    console.log(data);
+                    $('#update_id').val(data[0]);
+                    $('#id_Estado').val(data[10]);
+
+
+                })
+            }
 
         )
     </script>
-     <script>
-        $(document).ready (function(){
-            $('.edit-btnC').on('click',function(){
-                
-                $('#MUCliente').modal('show');
-                $tr=$(this).closest('tr');
-                var data=$tr.children("td").map(function(){
-                    return $(this).text();
-                }
-                ).get();
-                console.log(data);
-                $('#update_id').val(data[0]);
-                $('#nombres').val(data[1]);
-                $('#apellidos').val(data[2]);
-                $('#usuario').val(data[5]);
-                $('#correo').val(data[6]);
-                $('#telefono').val(data[7]);
-                $('#direccion').val(data[8]);
-                
-            })
-        }
 
-        )
-    </script>
+
 
 </body>
 
