@@ -108,6 +108,12 @@
                                         <p>Laptop</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="../../descuento.html" class="nav-link">
+                                        <i class="fas fa-dollar-sign nav-icon"></i>
+                                        <p>Descuento</p>
+                                    </a>
+                                </li>
 
 
                             </ul>
@@ -137,6 +143,13 @@
                                     <a href="../tables/TablaLaptop.php" class="nav-link ">
                                         <i class="fas fa-laptop nav-icon"></i>
                                         <p>Laptop</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="TablaDescuento.php" class="nav-link ">
+                                        <i class="fas fa-dollar-sign nav-icon"></i>
+                                        <p>Descuento</p>
                                     </a>
                                 </li>
                             </ul>

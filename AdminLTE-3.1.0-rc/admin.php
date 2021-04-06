@@ -129,6 +129,15 @@ if (isset($_SESSION['usuario'])) {
                                     </a>
                                 </li>
 
+                                <li class="nav-item">
+                                    <a href="descuento.html" class="nav-link">
+                                        <i class="fas fa-dollar-sign nav-icon"></i>
+                                        <p>Descuento</p>
+                                    </a>
+                                </li>
+
+                              
+
 
                             </ul>
                         </li>
@@ -157,6 +166,12 @@ if (isset($_SESSION['usuario'])) {
                                     <a href="pages/tables/TablaLaptop.php" class="nav-link">
                                         <i class="fas fa-laptop nav-icon"></i>
                                         <p>Laptop</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/tables/TablaDescuento.php" class="nav-link ">
+                                        <i class="fas fa-dollar-sign nav-icon"></i>
+                                        <p>Descuento</p>
                                     </a>
                                 </li>
                             </ul>

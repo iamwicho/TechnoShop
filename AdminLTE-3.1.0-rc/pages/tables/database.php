@@ -57,6 +57,14 @@ class Database
         $res = mysqli_query($this->con, $sql);
         return $res;
     }
+
+    public function readDescuento()
+    {
+        $sql = "SELECT * FROM descuento";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+    }
+
     public function countLaptop()
     {
         $sql = "SELECT * FROM laptop";
@@ -129,6 +137,18 @@ class Database
             return true;
         } else {
             echo mysqli_error($sql);
+        }
+    }
+
+    public function createDescuento($id_Producto, $precio_des)
+    {
+        $sql = "INSERT INTO descuento (id_des,id_Producto, modelo, disponibilidad, precio, precio_des) VALUES (NULL, '" . $id_Producto . "',(SELECT modelo from laptop where id_Producto='" . $id_Producto . "'), (SELECT disponibilidad from laptop where id_Producto='" . $id_Producto . "'), (SELECT precio from laptop where id_Producto='" . $id_Producto . "'), '" . $precio_des . "')";
+        $res = mysqli_query($this->con, $sql);
+        return $res;
+        if ($res) {
+            return true;
+        } else {
+            return $res;
         }
     }
 

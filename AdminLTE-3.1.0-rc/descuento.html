@@ -38,6 +38,7 @@
     />
     <!-- Daterange picker -->
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css" />
+
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
@@ -132,13 +133,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="cliente.html" class="nav-link">
+                    <a href="cliente.html" class="nav-link active">
                       <i class="far fa-user nav-icon"></i>
                       <p>Cliente</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="empleado.html" class="nav-link active">
+                    <a href="empleado.html" class="nav-link">
                       <i class="far fa-id-card nav-icon"></i>
                       <p>Empleado</p>
                     </a>
@@ -186,6 +187,7 @@
                       <p>Laptop</p>
                     </a>
                   </li>
+
                   <li class="nav-item">
                     <a href="pages/tables/TablaDescuento.php" class="nav-link ">
                         <i class="fas fa-dollar-sign nav-icon"></i>
@@ -244,117 +246,40 @@
         <div class="content-header">
             <div class="card card-primary" >
                 <div class="card-header">
-                  <h1 class="card-title"> Empleado</h1>
+                  <h1 class="card-title"> Descuento</h1>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="createEmpleado.php" method="POST">
+                <form action="createDescuento.php" method="POST" >
                   <div class="card-body">
 
                     <div class="input-group row col-auto mb-4">
                    
+                      <div class="input-group mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                         </div>
-                        <input disabled type="text" class="form-control col-2" placeholder="id_Empleado" name='id_Empleado' >
-    
-                      
-                        <div class="input-group-prepend">
-                          <span class="input-group-text "><i class="fas fa-fingerprint"></i></span>
+                        <input type="number" class="form-control" placeholder="id_Producto" name='id_Producto' id="id_Producto">
                       </div>
-                      <select class="form-control select2" name='id_Tipousuario' id="id_Tipousuario" type="text">
-                        <option selected="selected">Tipo de Empleado</option>
-                        <option>Admin</option>
-                        <option>Almacenista</option>
-                        <option>Mantenimiento</option>
-                        <option>soporteCliente</option>
-                        <option>soporteEmpleado</option>
-                      </select>
+
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-hourglass-half"></i></span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="precio_des" name='precio_des' id="precio_des">
+                      </div>
                   
                       
                     </div>
-                    
-
-
-                    <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-address-book"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Nombre(s)" name='nombres' id="nombres">
-
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-address-book"></i></span>
+                         
                       </div>
-                      <input type="text" class="form-control" placeholder="Apellido(s)" name='apellidos' id="apellidos">
                       </div>
 
-
-                    <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-user-astronaut"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Nombre de Usuario" name='usuario' id="usuario">
-                      </div>
-
-                      <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <input type="email" class="form-control" placeholder="Correo" name='correo' id="correo">
-                      </div>
-
-                      <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="Contraseña" name='contraseña' id="contraseña">
-                      </div>
-
-                      <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" name='telefono' id="telefono">
-                      </div>
-
-                      <div class="input-group mb-4">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Dirección" name='direccion' id="direccion">
-                      </div>
-                      <div class="input-group row col-auto mb-4">
-
-                        <div class="input-group-prepend mb-4">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
-                            </div>
-                          <select class="form-control select2" name='sexo' id="sexo" type="text">
-                            <option selected="selected">Sexo</option>
-                            <option>Masculino</option>
-                            <option>Femenino</option>
-                          </select>
-                          
-                        </div>
-                        
-                        <div class="input-group-prepend mb-4">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-hourglass-half"></i></span>
-                          </div>
-                          <input type="number" class="form-control" placeholder="Edad" name='edad' id="edad">
-                        </div>
-
-                        
-                        
-                      </div>
-
-                      
-
-
+                     
   
                   <div class="card-footer row">
                     <button type="submit" class="btn btn-danger col-2">Cancelar</button>
-                    <button type="submit" id="createEmpleado" name="CEmpleado" class="btn btn-success col-10">Registrar</button>
+                    <button type="submit" name="CDescuento" id="createDescuento" class="btn btn-success col-10">Registrar</button>
                   </div>
                 </form>
               </div>
@@ -366,9 +291,7 @@
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
-      <footer class="main-footer">
 
-      </footer>
 
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark fixed">
@@ -412,6 +335,13 @@
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
-    <script type="text/javascript" src="validacionE.js"></script>
+
+    <script>
+    $ (function(){
+$('[data-mask]').inputmask()
+
+    })
+    </script>
+   <script type="text/javascript" src="validacion.js"></script>
   </body>
 </html>

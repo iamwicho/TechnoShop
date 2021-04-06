@@ -149,7 +149,12 @@
                       <p>Laptop</p>
                     </a>
                   </li>
-                  
+                  <li class="nav-item">
+                                    <a href="descuento.html" class="nav-link">
+                                        <i class="fas fa-dollar-sign nav-icon"></i>
+                                        <p>Descuento</p>
+                                    </a>
+                                </li>
                   
                 </ul>
               </li>
@@ -180,6 +185,12 @@
                       <p>Laptop</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                                    <a href="pages/tables/TablaDescuento.php" class="nav-link ">
+                                        <i class="fas fa-dollar-sign nav-icon"></i>
+                                        <p>Descuento</p>
+                                    </a>
+                                </li>
                 </ul>
               </li>
 
