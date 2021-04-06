@@ -180,7 +180,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                    <a href="bitacora.php" class="nav-link ">
+                    <a href="../../bitacora.php" class="nav-link ">
                       <i class="nav-icon fas fa-book"></i>
                       <p>
                         Bitácora
@@ -189,15 +189,6 @@
                     </a>
                     
                   </li>
-                  <li class="nav-item">
-                            <a href="ordenes.php" class="nav-link ">
-                                <i class="nav-icon fas fa-box"></i>
-                                <p>
-                                    Órdenes
-                                    <i class="right fas "></i>
-                                </p>
-                            </a>
-                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

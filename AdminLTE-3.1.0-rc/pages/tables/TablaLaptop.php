@@ -181,7 +181,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="bitacora.php" class="nav-link ">
+                            <a href="../../bitacora.php" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Bitácora
@@ -189,15 +189,6 @@
                                 </p>
                             </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="ordenes.php" class="nav-link ">
-                                <i class="nav-icon fas fa-box"></i>
-                                <p>
-                                    Órdenes
-                                    <i class="right fas "></i>
-                                </p>
-                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -269,7 +260,7 @@
                                                 $disponibilidad = $row->disponibilidad;
                                                 $id_fabricante = $row->id_fabricante;
                                                 $precio = $row->precio;
-                                                $id_Imagen = $row->id_Imagen;
+                                                $imagen = $row->imagen;
                                                 $id_Sistema = $row->id_Sistema;
                                                 $ram = $row->ram;
                                                 $graficos = $row->graficos;
@@ -296,7 +287,7 @@
                                                     <td><?php echo $disponibilidad; ?></td>
                                                     <td><?php echo $id_fabricante; ?></td>
                                                     <td><?php echo $precio; ?></td>
-                                                    <td><?php echo $id_Imagen; ?></td>
+                                                    <td><?php echo $imagen; ?></td>
                                                     <td><?php echo $id_Sistema; ?></td>
                                                     <td><?php echo $ram; ?></td>
                                                     <td><?php echo $graficos; ?></td>
